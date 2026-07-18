@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+@font-face {
+font-family: 'CSDiora';
+src: url('../assets/fonts/CS-Diora.otf') format('opentype');
+}
+
+.logo-font {
+    font-family: 'CSDiora', sans-serif;
+}

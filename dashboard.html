@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | CareerMap AI</title>
+
+    <link rel="icon" href="assets/img/icon/logo.png">
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <script>
+
+        tailwind.config = {
+
+            theme: {
+
+                extend: {
+
+                    fontFamily: {
+                        sans: ["Inter", "sans-serif"]
+                    },
+
+                    colors: {
+                        primary: "#2563EB"
+                    }
+
+                }
+
+            }
+
+        }
+
+    </script>
+
+</head>
+
+<body class="bg-slate-100 font-sans text-slate-800 overflow-x-hidden">
+
+    <div class="flex min-h-screen">
+
+        <!--===== Sidebar =====-->
+        <aside id="sidebar" class="fixed top-0 left-0 z-50 h-screen w-72 bg-white border-r border-slate-200 flex flex-col transform
+            -transition-x-full -translate-x-full transition-transform
+            duration-300 lg:translate-x-0">
+
+            <!-- Logo -->
+            <div class="border-b border-slate-200 p-4">
+
+                <div class="flex items-center gap-6">
+
+                    <img src="assets/img/favi.png" alt="CareerMap AI" class="w-12 h-12 rounded-lg">
+
+                    <div>
+                        <h1 class="text-xl font-bold">
+                            CareerMap AI
+                        </h1>
+
+                        <p class="text-sm text-slate-500">
+                            AI Career Companion
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="flex-1 px-4 py-6 space-y-2">
+
+                <a href="#" class="flex items-center gap-3 rounded-xl
+                    bg-blue-600 px-4 py-3
+                    text-white font-medium">
+                    <i class="fa-solid fa-house"></i>
+                    Dashboard
+                </a>
+
+                <a href="roadmap.html" class="flex items-center gap-3 rounded-xl
+                    px-4 py-3
+                    text-slate-600
+                    hover:bg-slate-100">
+                    <i class="fa-solid fa-road"></i>
+                    Roadmap
+                </a>
+
+                <a href="learning.html" class="flex items-center gap-3 rounded-xl
+                    px-4 py-3
+                    text-slate-600
+                    hover:bg-slate-100">
+                    <i class="fa-solid fa-book-open"></i>
+                    Learning
+                </a>
+
+                <a href="mentor.html" class="flex items-center gap-3 rounded-xl
+                    px-4 py-3
+                    text-slate-600
+                    hover:bg-slate-100">
+                    <i class="fa-solid fa-robot"></i>
+                    AI Mentor
+                </a>
+
+                <a href="resumebuilder.html"
+                    class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-100">
+                    <i class="fa-solid fa-briefcase"></i>
+                    Resume Builder
+                </a>
+
+                <a href="progress.html" class="flex items-center gap-3 rounded-xl
+                    px-4 py-3
+                    text-slate-600
+                    hover:bg-slate-100">
+                    <i class="fa-solid fa-chart-line"></i>
+                    Progress
+                </a>
+
+                <a href="profile.html" class="flex items-center gap-3 rounded-xl
+                    px-4 py-3
+                    text-slate-600
+                    hover:bg-slate-100">
+                    <i class="fa-solid fa-user"></i>
+                    Profile
+                </a>
+            </nav>
+
+            <!-- Bottom -->
+            <a href="login.html">
+                <div class="border-t border-slate-200 p-4">
+                    <button id="logoutBtn" class="w-full rounded-xl
+                        border border-slate-300
+                        py-3
+                        font-medium
+                        hover:bg-slate-100">
+
+                        <i class="fa-solid fa-right-from-bracket mr-2"></i>
+                        Logout
+                    </button>
+                </div>
+            </a>
+        </aside>
+
+        <!-- Overlay -->
+        <div id="overlay" class="fixed inset-0 z-40 bg-black/40
+                opacity-0 invisible
+                transition-all duration-300
+                lg:hidden">
+        </div>
+
+        <!-- Right Side -->
+        <div class="flex flex-1 flex-col lg:ml-72">
+
+            <!--===== Header =====-->
+            <header class="flex flex-1 flex-col top-2 z-40 bg-white border-b border-slate-200 rounded-lg border">
+                <div class="flex items-center justify-between h-20 px-6 lg:px-7">
+
+                    <!-- Left -->
+                    <div class="flex items-center gap-4">
+
+                        <!-- Mobile Menu -->
+                        <button id="menuBtn"
+                            class="lg:hidden w-11 h-11 rounded-lg border border-slate-200 hover:bg-slate-100 transition">
+
+                            <i class="fa-solid fa-bars"></i>
+
+                        </button>
+
+                        <!-- Search -->
+                        <div
+                            class="hidden md:flex items-center w-80 rounded-xl border border-slate-200 bg-slate-50 px-4">
+
+                            <i class="fa-solid fa-magnifying-glass text-slate-400"></i>
+
+                            <input type="text" placeholder="Search..."
+                                class="w-full bg-transparent px-3 py-3 outline-none text-sm">
+                        </div>
+                    </div>
+
+                    <!-- Right -->
+                    <div class="flex items-center gap-4">
+
+                        <!-- Notification -->
+                        <button
+                            class="relative w-11 h-11 rounded-lg border border-slate-200 hover:bg-slate-100 transition">
+
+                            <i class="fa-regular fa-bell"></i>
+
+                            <span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-red-500"></span>
+
+                        </button>
+
+                        <!-- Profile -->
+                        <button id="profileBtn"
+                            class="flex items-center gap-3 rounded-xl border border-slate-200 px-3 py-2 hover:bg-slate-50 transition">
+
+                            <img src="assets/img/avatar.png" class="w-10 h-10 rounded-full object-cover" alt="Profile">
+
+                            <div class="hidden sm:block text-left">
+                                <h4 class="text-sm font-semibold">
+                                    <span id="userName"></span>
+                                </h4>
+
+                                <p class="text-xs text-slate-500">
+                                    Student
+                                </p>
+                            </div>
+
+                            <i class="fa-solid fa-chevron-down text-xs text-slate-400"></i>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <!--====== Main ======-->
+            <main id="mainContent" class="flex-1 p-9 lg:p-7">
+
+                <!-- Hero -->
+                <section class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+                    <!-- Left -->
+                    <div class="lg:col-span-2 bg-white rounded-xl border border-slate-200 p-8">
+
+                        <span
+                            class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-sm font-medium">
+                            🚀 Career Journey
+                        </span>
+
+                        <h1 class="text-5xl font-black text-slate-900 dark:text-black">
+                            Welcome Back,
+                            <span id="heroUserName" class="text-blue-600">
+                            </span>
+                            👋
+                        </h1>
+
+                        <p class="mt-4 text-slate-600 max-w-2xl">
+                            Continue your Full Stack Developer journey with personalized
+                            roadmaps, AI guidance and daily learning goals.
+                        </p>
+
+                        <div class="mt-8 flex flex-wrap gap-4">
+                            <button
+                                class="px-6 py-3 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 transition">
+                                Continue Learning
+                            </button>
+
+                            <button class="px-6 py-3 rounded-lg border border-slate-300 hover:bg-slate-100 transition">
+
+                                View Roadmap
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Right -->
+                    <div class="bg-white rounded-xl border border-slate-200 p-6">
+                        <div class="flex justify-between items-center">
+
+                            <h3 class="font-semibold">
+                                Current Goal
+                            </h3>
+
+                            <span class="text-xs bg-green-100 text-green-700 px-3 py-1 rounded-full">
+                                Active
+                            </span>
+                        </div>
+
+                        <h2 class="mt-6 text-2xl font-bold">
+                            Full Stack Developer
+                        </h2>
+
+                        <p class="mt-2 text-slate-500 text-sm">
+                            Estimated Completion
+                        </p>
+
+
+                        <!-- Progress -->
+                        <div class="mt-6">
+                            <div class="flex justify-between text-sm mb-2">
+                                <span>48%</span>
+                                <span>6 Months Left</span>
+                            </div>
+
+                            <div class="w-full h-2 rounded-full bg-slate-200">
+                                <div class="w-1/2 h-2 rounded-full bg-blue-600"></div>
+                            </div>
+                        </div>
+
+                        <button
+                            class="mt-8 w-full py-3 rounded-lg border border-blue-600 text-blue-600 hover:bg-blue-50 transition">
+
+                            Continue
+
+                        </button>
+                    </div>
+                </section>
+
+                <!--===== Statistics =====-->
+                <section class="mt-8">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5">
+
+                        <!-- Resume -->
+                        <div class="bg-white rounded-xl border border-slate-200 p-6">
+                            <div class="text-3xl">📄</div>
+                            <p class="mt-4 text-sm text-slate-500">
+                                Resume Score
+                            </p>
+
+                            <h2 class="mt-2 text-3xl font-bold">
+                                92%
+                            </h2>
+
+                            <span class="text-sm text-green-600">
+                                Excellent
+                            </span>
+                        </div>
+
+                        <!-- Roadmap -->
+                        <div class="bg-white rounded-xl border border-slate-200 p-6">
+                            <div class="text-3xl">🗺️</div>
+                            <p class="mt-4 text-sm text-slate-500">
+                                Roadmap Progress
+                            </p>
+
+                            <h2 class="mt-2 text-3xl font-bold">
+                                48%
+                            </h2>
+
+                            <span class="text-sm text-blue-600">
+                                18 / 37 Skills
+                            </span>
+                        </div>
+
+                        <!-- Skills -->
+                        <div class="bg-white rounded-xl border border-slate-200 p-6">
+                            <div class="text-3xl">🚀</div>
+                            <p class="mt-4 text-sm text-slate-500">
+                                Skills Learned
+                            </p>
+
+                            <h2 class="mt-2 text-3xl font-bold">
+                                15
+                            </h2>
+
+                            <span class="text-sm text-indigo-600">
+                                +2 This Week
+                            </span>
+                        </div>
+
+                        <!-- Streak -->
+                        <div class="bg-white rounded-xl border border-slate-200 p-6">
+                            <div class="text-3xl">🔥</div>
+                            <p class="mt-4 text-sm text-slate-500">
+                                Learning Streak
+                            </p>
+
+                            <h2 class="mt-2 text-3xl font-bold">
+                                21
+                            </h2>
+
+                            <span class="text-sm text-orange-600">
+                                Days
+                            </span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Continue Learning -->
+                <section class="mt-10">
+
+                    <!-- Section Header -->
+                    <div class="flex items-center justify-between mb-6">
+                        <div>
+                            <h2 class="text-2xl font-bold">
+                                Continue Learning
+                            </h2>
+
+                            <p class="text-slate-500 text-sm mt-1">
+                                Continue where you left off.
+                            </p>
+                        </div>
+
+                        <a href="#" class="text-blue-600 text-sm font-medium hover:underline"> View All → </a>
+                    </div>
+
+                    <!-- Cards -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+
+                        <!-- Current Course -->
+                        <article class="bg-white rounded-xl border border-slate-200 p-6">
+
+                            <div class="flex justify-between items-center">
+                                <span class="text-sm font-medium text-blue-600">
+                                    Current Course
+                                </span>
+
+                                <span class="text-sm text-slate-500">
+                                    48%
+                                </span>
+                            </div>
+
+                            <h3 class="mt-5 text-xl font-semibold">
+                                Full Stack Development
+                            </h3>
+
+                            <p class="mt-2 text-sm text-slate-500">
+                                Continue your personalized roadmap and complete today's lesson.
+                            </p>
+
+                            <!-- Progress -->
+                            <div class="mt-6">
+                                <div class="h-2 rounded-full bg-slate-200">
+                                    <div class="h-2 w-1/2 rounded-full bg-blue-600"></div>
+                                </div>
+                            </div>
+
+                            <button
+                                class="mt-6 w-full rounded-lg bg-blue-600 py-3 text-white font-medium hover:bg-blue-700 transition">
+                                Continue Learning
+                            </button>
+                        </article>
+
+                        <!-- Today's Goal -->
+                        <article class="bg-white rounded-xl border border-slate-200 p-6">
+
+                            <span class="text-sm font-medium text-orange-600">
+                                🎯 Today's Goal
+                            </span>
+
+                            <h3 class="mt-5 text-xl font-semibold">
+                                Complete React Basics
+                            </h3>
+
+                            <ul class="mt-5 space-y-3 text-sm">
+                                <li>✅ JSX Introduction</li>
+                                <li>⬜ Components</li>
+                                <li>⬜ Props</li>
+                                <li>⬜ State</li>
+                            </ul>
+
+                            <button
+                                class="mt-6 w-full rounded-lg border border-slate-300 py-3 font-medium hover:bg-slate-100 transition">
+                                Start Goal
+                            </button>
+                        </article>
+
+                        <!-- Next Skill -->
+                        <article class="bg-white rounded-xl border border-slate-200 p-6">
+
+                            <span class="text-sm font-medium text-green-600">
+                                📖 Next Skill
+                            </span>
+
+                            <h3 class="mt-5 text-xl font-semibold">
+                                JavaScript DOM
+                            </h3>
+
+                            <p class="mt-2 text-sm text-slate-500">
+                                Learn DOM manipulation, events and interactive web pages.
+                            </p>
+
+                            <div class="mt-6 flex flex-wrap gap-2">
+                                <span class="rounded-full bg-slate-100 px-3 py-1 text-xs">
+                                    Beginner
+                                </span>
+
+                                <span class="rounded-full bg-slate-100 px-3 py-1 text-xs">
+                                    3 Hours
+                                </span>
+                            </div>
+
+                            <button
+                                class="mt-6 w-full rounded-lg border border-blue-600 py-3 text-blue-600 font-medium hover:bg-blue-50 transition">
+                                Start Learning
+                            </button>
+                        </article>
+                    </div>
+                </section>
+
+                <!-- AI Mentor -->
+                <section class="mt-10">
+
+                    <!-- Section Header -->
+                    <div class="flex items-center justify-between mb-6">
+                        <div>
+                            <h2 class="text-2xl font-bold">
+                                AI Mentor
+                            </h2>
+
+                            <p class="mt-1 text-sm text-slate-500">
+                                Personalized recommendations based on your progress.
+                            </p>
+                        </div>
+
+                        <button
+                            class="hidden md:block rounded-lg bg-blue-600 px-5 py-3 text-white font-medium hover:bg-blue-700 transition">
+                            Ask AI Mentor
+                        </button>
+                    </div>
+
+                    <!-- AI Card -->
+                    <div class="bg-white rounded-xl border border-slate-200 p-6">
+
+                        <!-- Top -->
+                        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+
+                            <div>
+                                <span class="text-blue-600 font-medium">
+                                    🤖 AI Mentor
+                                </span>
+
+                                <h3 class="mt-2 text-2xl font-bold">
+                                    Hello Pathan,
+                                </h3>
+
+                                <p class="mt-3 text-slate-600 max-w-2xl">
+                                    You're making good progress toward becoming a Full Stack Developer.
+                                    Here are today's recommendations to keep your learning consistent.
+                                </p>
+                            </div>
+
+                            <!-- Mobile Button -->
+                            <button
+                                class="md:hidden rounded-lg bg-blue-600 py-3 text-white font-medium hover:bg-blue-700 transition">
+
+                                Ask AI Mentor
+
+                            </button>
+                        </div>
+
+                        <!-- Recommendation Cards -->
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mt-8">
+
+                            <!-- Resume -->
+                            <article class="rounded-lg border border-slate-200 p-5">
+
+                                <div class="text-3xl">
+                                    📄
+                                </div>
+
+                                <h4 class="mt-4 font-semibold">
+                                    Improve Resume
+                                </h4>
+
+                                <p class="mt-2 text-sm text-slate-500">
+                                    Add your latest project to improve your ATS score.
+                                </p>
+
+                                <button class="mt-5 text-blue-600 text-sm font-medium hover:underline">
+
+                                    Update Resume →
+
+                                </button>
+                            </article>
+
+                            <!-- Learning -->
+                            <article class="rounded-lg border border-slate-200 p-5">
+
+                                <div class="text-3xl">
+                                    📚
+                                </div>
+
+                                <h4 class="mt-4 font-semibold">
+                                    Learning Recommendation
+                                </h4>
+
+                                <p class="mt-2 text-sm text-slate-500">
+                                    Finish JavaScript DOM before starting React.
+                                </p>
+
+                                <button class="mt-5 text-blue-600 text-sm font-medium hover:underline">
+
+                                    Continue Learning →
+
+                                </button>
+                            </article>
+
+                            <!-- Coding -->
+                            <article class="rounded-lg border border-slate-200 p-5">
+
+                                <div class="text-3xl">
+                                    💻
+                                </div>
+
+                                <h4 class="mt-4 font-semibold">
+                                    Coding Practice
+                                </h4>
+
+                                <p class="mt-2 text-sm text-slate-500">
+                                    Solve 2 JavaScript problems to strengthen your fundamentals.
+                                </p>
+
+                                <button class="mt-5 text-blue-600 text-sm font-medium hover:underline">
+
+                                    Start Practice →
+
+                                </button>
+                            </article>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Career Roadmap -->
+                <section class="mt-10">
+
+                    <!-- Section Header -->
+                    <div class="flex items-center justify-between mb-6">
+
+                        <div>
+                            <h2 class="text-2xl font-bold">
+                                Career Roadmap
+                            </h2>
+
+                            <p class="mt-1 text-sm text-slate-500">
+                                Track your journey to becoming a Full Stack Developer.
+                            </p>
+                        </div>
+
+                        <a href="roadmap.html"
+                            class="rounded-lg border border-blue-600 px-5 py-3 text-blue-600 font-medium hover:bg-blue-50 transition">
+
+                            View Full Roadmap →
+
+                        </a>
+                    </div>
+
+                    <!-- Roadmap Card -->
+                    <div class="bg-white rounded-xl border border-slate-200 p-6">
+
+                        <!-- Top -->
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-center gap-6">
+
+                            <div>
+                                <span class="text-sm text-slate-500">
+                                    Overall Progress
+                                </span>
+
+                                <h3 class="mt-2 text-4xl font-bold">
+                                    48%
+                                </h3>
+                            </div>
+
+                            <div class="text-left md:text-right">
+                                <span class="text-sm text-slate-500">
+                                    Skills Completed
+                                </span>
+
+                                <h3 class="mt-2 text-2xl font-semibold">
+                                    18 / 37
+                                </h3>
+                            </div>
+                        </div>
+
+                        <!-- Progress Bar -->
+                        <div class="mt-8">
+
+                            <div class="h-3 rounded-full bg-slate-200 overflow-hidden">
+                                <div class="w-1/2 h-full bg-blue-600 rounded-full"></div>
+                            </div>
+                        </div>
+
+                        <!-- Skills -->
+                        <div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4 mt-10">
+
+                            <!-- Completed -->
+                            <div class="rounded-lg bg-green-50 border border-green-200 p-5 text-center">
+
+                                <div class="text-3xl">
+                                    ✅
+                                </div>
+
+                                <h4 class="mt-3 font-semibold">
+                                    HTML
+                                </h4>
+                            </div>
+
+                            <!-- Completed -->
+                            <div class="rounded-lg bg-green-50 border border-green-200 p-5 text-center">
+
+                                <div class="text-3xl">
+                                    ✅
+                                </div>
+
+                                <h4 class="mt-3 font-semibold">
+                                    CSS
+                                </h4>
+                            </div>
+
+                            <!-- Current -->
+                            <div class="rounded-lg bg-blue-50 border border-blue-200 p-5 text-center">
+
+                                <div class="text-3xl">
+                                    📖
+                                </div>
+
+                                <h4 class="mt-3 font-semibold">
+                                    JavaScript
+                                </h4>
+
+                                <p class="mt-2 text-xs text-blue-600">
+                                    Current Skill
+                                </p>
+                            </div>
+
+                            <!-- Upcoming -->
+                            <div class="rounded-lg bg-slate-100 border border-slate-200 p-5 text-center">
+
+                                <div class="text-3xl">
+                                    🔒
+                                </div>
+
+                                <h4 class="mt-3 font-semibold">
+                                    React
+                                </h4>
+                            </div>
+
+                            <!-- Upcoming -->
+                            <div class="rounded-lg bg-slate-100 border border-slate-200 p-5 text-center">
+
+                                <div class="text-3xl">
+                                    🔒
+                                </div>
+
+                                <h4 class="mt-3 font-semibold">
+                                    Node.js
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+                <!--=====Quick Action=====-->
+                <!-- Quick Actions -->
+                <section class="mt-10 mb-10">
+
+                    <!-- Heading -->
+                    <div class="mb-6">
+                        <h2 class="text-2xl font-bold">Quick Actions</h2>
+
+                        <p class="mt-1 text-sm text-slate-500">
+                            Access your most used CareerMap AI features.
+                        </p>
+                    </div>
+
+                    <!-- Cards -->
+                    <div class="grid grid-cols-2 lg:grid-cols-3 gap-5">
+
+                        <!-- Resume -->
+                        <a href="resume.html"
+                            class="bg-white border border-slate-200 rounded-xl p-6 hover:shadow-md transition">
+
+                            <div class="text-4xl">📄</div>
+                            <h3 class="mt-5 font-semibold text-lg">
+                                Resume Builder
+                            </h3>
+
+                            <p class="mt-2 text-sm text-slate-500">
+                                Create ATS-friendly resumes.
+                            </p>
+                        </a>
+
+                        <!-- AI Mentor -->
+                        <a href="mentor.html"
+                            class="bg-white border border-slate-200 rounded-xl p-6 hover:shadow-md transition">
+
+                            <div class="text-4xl">🤖</div>
+
+                            <h3 class="mt-5 font-semibold text-lg">
+                                AI Mentor
+                            </h3>
+
+                            <p class="mt-2 text-sm text-slate-500">
+                                Get personalized career guidance.
+                            </p>
+                        </a>
+
+                        <!-- Jobs -->
+                        <a href="jobs.html"
+                            class="bg-white border border-slate-200 rounded-xl p-6 hover:shadow-md transition">
+
+                            <div class="text-4xl">💼</div>
+
+                            <h3 class="mt-5 font-semibold text-lg">
+                                Jobs & Internships
+                            </h3>
+
+                            <p class="mt-2 text-sm text-slate-500">
+                                Discover opportunities.
+                            </p>
+                        </a>
+
+                        <!-- Progress -->
+                        <a href="progress.html"
+                            class="bg-white border border-slate-200 rounded-xl p-6 hover:shadow-md transition">
+
+                            <div class="text-4xl">📊</div>
+
+                            <h3 class="mt-5 font-semibold text-lg">
+                                Progress
+                            </h3>
+
+                            <p class="mt-2 text-sm text-slate-500">
+                                View learning statistics.
+                            </p>
+                        </a>
+
+                        <!-- Certificates -->
+                        <a href="certificates.html"
+                            class="bg-white border border-slate-200 rounded-xl p-6 hover:shadow-md transition">
+
+                            <div class="text-4xl">🏆</div>
+
+                            <h3 class="mt-5 font-semibold text-lg">
+                                Certificates
+                            </h3>
+
+                            <p class="mt-2 text-sm text-slate-500">
+                                Manage achievements.
+                            </p>
+                        </a>
+
+                        <!-- Settings -->
+                        <a href="settings.html"
+                            class="bg-white border border-slate-200 rounded-xl p-6 hover:shadow-md transition">
+
+                            <div class="text-4xl">⚙️</div>
+
+                            <h3 class="mt-5 font-semibold text-lg">
+                                Settings
+                            </h3>
+
+                            <p class="mt-2 text-sm text-slate-500">
+                                Update account preferences.
+                            </p>
+                        </a>
+                    </div>
+                </section>
+            </main>
+
+            <!--================ Footer ================-->
+            <footer class="mt-12 border-t py-8 text-center text-black">
+
+                <h3 class="font-bold text-lg">
+                    CareerMap AI
+                </h3>
+
+                <p class="mt-2">
+                    Your Personalized AI Career Companion.
+                </p>
+
+                <div class="flex justify-center gap-6 mt-5">
+                    <a href="#">Dashboard</a>
+                    <a href="#">Roadmap</a>
+                    <a href="#">Learning</a>
+                    <a href="#">AI Mentor</a>
+                    <a href="#">Profile</a>
+                </div>
+
+                <p class="mt-6 text-sm">
+                    © 2026 CareerMap AI. Built with ❤️ by BCA Students.
+                </p>
+            </footer>
+        </div>
+    </div>
+
+
+    <!-- Logout Modal -->
+    <div id="logoutModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 backdrop-blur-sm">
+        <div class="w-[90%] max-w-md rounded-2xl bg-white dark:bg-slate-900 shadow-2xl p-6">
+            <div class="flex items-center gap-4">
+                <div class="flex h-14 w-14 items-center justify-center rounded-full bg-red-100 dark:bg-red-500/20">
+                    <span class="text-2xl">🚪</span>
+                </div>
+
+                <div>
+                    <h2 class="text-xl font-bold text-slate-900 dark:text-white">
+                        Logout?
+                    </h2>
+
+                    <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
+                        Are you sure you want to sign out of CareerMap AI?
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-8 flex justify-end gap-3">
+                <button id="cancelLogout"
+                    class="rounded-xl text-white border border-slate-300 px-5 py-2 font-medium hover:bg-slate-100 dark:border-slate-700 dark:hover:bg-slate-800">
+                    Cancel
+                </button>
+
+                <button id="confirmLogout"
+                    class="rounded-xl bg-red-600 px-5 py-2 font-medium text-white hover:bg-red-700">
+                    Logout
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="assets/js/dashboard.js"></script>
+    <script src="assets/js/guard.js"></script>
+    <script src="assets/js/logout.js"></script>
+</body>
+
+</html>

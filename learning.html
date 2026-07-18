@@ -1,0 +1,1489 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Learning | CareerMap AI</title>
+
+    <link rel="icon" href="assets/img/icon/logo.png">
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ["Inter", "sans-serif"]
+                    },
+                    colors: {
+                        primary: "#2563EB"
+                    }
+                }
+            }
+        }
+    </script>
+
+</head>
+
+<body class="bg-slate-100 font-sans text-slate-800 overflow-x-hidden">
+
+    <div class="flex min-h-screen bg-white/10">
+
+        <!--===== Sidebar =====-->
+        <aside id="sidebar" class="fixed top-0 left-0 z-50 h-screen w-72 bg-white border-r border-slate-200 flex flex-col transform
+            -transition-x-full -translate-x-full transition-transform
+            duration-300 lg:translate-x-0">
+
+            <!-- Logo -->
+            <div class="border-b border-slate-200 p-4">
+                <div class="flex items-center gap-6">
+                    <img src="assets/img/favi.png" alt="CareerMap AI" class="w-12 h-12 rounded-lg">
+
+                    <div>
+                        <h1 class="text-xl font-bold">
+                            CareerMap AI
+                        </h1>
+
+                        <p class="text-sm text-slate-500">
+                            AI Career Companion
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="flex-1 px-4 py-6 space-y-2">
+
+                <a href="dashboard.html"
+                    class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-100">
+                    <i class="fa-solid fa-house"></i>
+                    Dashboard
+                </a>
+
+                <a href="roadmap.html"
+                    class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-100">
+                    <i class="fa-solid fa-road"></i>
+                    Roadmap
+                </a>
+
+                <a href="learning.html" class="flex items-center gap-3 px-4 py-3 rounded-xl bg-blue-600 text-white">
+                    <i class="fa-solid fa-book-open"></i>
+                    Learning
+                </a>
+
+                <a href="mentor.html"
+                    class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-100">
+                    <i class="fa-solid fa-robot"></i>
+                    AI Mentor
+                </a>
+
+                <a href="resumebuilder.html"
+                    class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-100">
+                    <i class="fa-solid fa-briefcase"></i>
+                    Resume Builder
+                </a>
+
+                <a href="progress.html" class="flex items-center gap-3 rounded-xl
+                    px-4 py-3 text-slate-600 hover:bg-slate-100">
+                    <i class="fa-solid fa-chart-line"></i>
+                    Progress
+                </a>
+
+                <a href="profile.html" class="flex items-center gap-3 rounded-xl
+                    px-4 py-3 text-slate-600 hover:bg-slate-100">
+                    <i class="fa-solid fa-user"></i>
+                    Profile
+                </a>
+            </nav>
+
+            <!-- Bottom -->
+            <a href="login.html">
+                <div class="border-t border-slate-200 p-4">
+                    <button id="logoutBtn" class="w-full rounded-xl
+                        border border-slate-300 py-3 font-medium
+                        hover:bg-slate-100">
+                        <i class="fa-solid fa-right-from-bracket mr-2"></i>
+                        Logout
+                    </button>
+                </div>
+            </a>
+        </aside>
+
+        <!-- Overlay -->
+        <div id="overlay"
+            class="fixed inset-0 bg-black/40 opacity-0 invisible transition-all duration-300 lg:hidden z-40">
+        </div>
+
+        <!-- Mobile Overlay -->
+        <div id="overlay" class="fixed inset-0 bg-black/40 z-40 hidden lg:hidden">
+        </div>
+
+        <!-- Right Side -->
+        <div class="flex flex-1 flex-col lg:ml-72">
+
+            <!--===== Header =====-->
+            <header class="flex flex-1 flex-col top-2 z-40 bg-white border-b border-slate-200 rounded-lg border">
+                <div class="flex items-center justify-between h-20 px-6 lg:px-7">
+
+                    <!-- Left -->
+                    <div class="flex items-center gap-4">
+
+                        <!-- Mobile Menu -->
+                        <button id="menuBtn"
+                            class="lg:hidden w-11 h-11 rounded-lg border border-slate-200 hover:bg-slate-100 transition">
+
+                            <i class="fa-solid fa-bars"></i>
+
+                        </button>
+
+
+
+                        <!-- Search -->
+                        <div
+                            class="hidden md:flex items-center w-80 rounded-xl border border-slate-200 bg-slate-50 px-4">
+                            <i class="fa-solid fa-magnifying-glass text-slate-400"></i>
+
+                            <input type="text" placeholder="Search..."
+                                class="w-full bg-transparent px-3 py-3 outline-none text-sm">
+                        </div>
+                    </div>
+
+                    <!-- Right -->
+                    <div class="flex items-center gap-4">
+
+                        <!-- Notification -->
+                        <button
+                            class="relative w-11 h-11 rounded-lg border border-slate-200 hover:bg-slate-100 transition">
+
+                            <i class="fa-regular fa-bell"></i>
+
+                            <span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-red-500"></span>
+
+                        </button>
+
+                        <!-- Profile -->
+                        <button id="profileBtn"
+                            class="flex items-center gap-3 rounded-xl border border-slate-200 px-3 py-2 hover:bg-slate-50 transition">
+
+                            <img src="assets/img/avatar.png" class="w-10 h-10 rounded-full object-cover" alt="Profile">
+
+                            <div class="hidden sm:block text-left">
+                                <h4 class="text-sm font-semibold">
+                                    <span id="userName"></span>
+                                </h4>
+
+                                <p class="text-xs text-slate-500">
+                                    Student
+                                </p>
+                            </div>
+
+                            <i class="fa-solid fa-chevron-down text-xs text-slate-400"></i>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <!--================ Learning Hero ================-->
+            <main id="mainContent" class="flex-1 p-9 lg:p-7">
+                <section class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+                    <!-- Hero Left -->
+                    <div class="lg:col-span-2 bg-white rounded-xl border border-slate-200 p-8">
+
+                        <span
+                            class="inline-flex items-center bg-blue-100 text-blue-700 text-sm font-semibold px-4 py-1 rounded-full">
+                            📚 Learning Dashboard
+                        </span>
+
+                        <h1 class="text-5xl font-black text-slate-900 dark:text-black">
+                            Welcome Back,
+                            <span id="heroUserName" class="text-blue-600">User</span>
+                            👋
+                        </h1>
+
+                        <p class="mt-4 text-slate-600 max-w-2xl">
+                            Continue learning from where you stopped. Complete today's goal
+                            and move one step closer to becoming a Full Stack Developer.
+                        </p>
+
+                        <!-- Current Course -->
+                        <div class="mt-8">
+                            <div class="flex justify-between text-sm mb-2">
+                                <span class="font-medium">
+                                    📖 Current Course
+                                </span>
+
+                                <span class="text-blue-600 font-semibold">
+                                    48%
+                                </span>
+                            </div>
+
+                            <div class="w-full h-3 bg-slate-200 rounded-full">
+                                <div class="w-1/2 h-full bg-blue-600 rounded-full"></div>
+                            </div>
+
+                            <p class="text-sm text-slate-500 mt-2">
+                                React.js Masterclass • Lesson 18 of 37
+                            </p>
+                        </div>
+
+                        <!-- Buttons -->
+                        <div class="mt-8 flex flex-wrap gap-4">
+                            <button
+                                class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg transition">
+                                ▶ Continue Learning
+                            </button>
+
+                            <button
+                                class="border border-slate-300 hover:bg-slate-100 px-6 py-3 rounded-lg font-semibold transition">
+                                📚 View All Courses
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Right Card -->
+                    <div class="bg-white border rounded-2xl p-6">
+                        <div class="flex items-center justify-between">
+                            <h3 class="font-bold text-lg">
+                                Today's Goal
+                            </h3>
+
+                            <span class="bg-orange-100 text-orange-600 text-xs px-3 py-1 rounded-full">
+                                Active
+                            </span>
+                        </div>
+
+                        <div class="mt-6">
+                            <div class="text-5xl text-center">
+                                🔥
+                            </div>
+
+                            <h2 class="text-3xl font-bold text-center mt-4">
+                                21 Days
+                            </h2>
+
+                            <p class="text-center text-slate-500 mt-2">
+                                Learning Streak
+                            </p>
+                        </div>
+
+                        <hr class="my-6">
+
+                        <div>
+                            <h4 class="font-semibold">
+                                🎯 Daily Goal
+                            </h4>
+
+                            <p class="text-slate-500 text-sm mt-2">
+                                Complete React Components lesson and solve
+                                3 JavaScript practice questions.
+                            </p>
+                        </div>
+
+                        <button
+                            class="w-full mt-6 bg-green-600 hover:bg-green-700 text-white font-semibold py-3 rounded-lg transition">
+                            Mark as Complete
+                        </button>
+                    </div>
+
+                </section>
+
+
+                <!--================ Learning Statistics ================-->
+                <section class="mt-8">
+
+                    <!-- Heading -->
+                    <div class="flex items-center justify-between mb-6">
+                        <div>
+                            <h2 class="text-2xl font-bold">
+                                Learning Statistics
+                            </h2>
+
+                            <p class="text-slate-500 mt-1">
+                                Track your learning progress and achievements.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Statistics Cards -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+
+                        <!-- Total Courses -->
+                        <div class="bg-white border rounded-2xl p-6 hover:shadow-md transition">
+                            <div class="flex items-center justify-between">
+                                <span class="text-4xl">📚</span>
+
+                                <span class="text-blue-600 font-semibold">
+                                    +2
+                                </span>
+                            </div>
+
+                            <h3 class="text-3xl font-bold mt-5">
+                                18
+                            </h3>
+
+                            <p class="text-slate-500 mt-2">
+                                Total Courses
+                            </p>
+                        </div>
+
+                        <!-- Completed -->
+                        <div class="bg-white border rounded-2xl p-6 hover:shadow-md transition">
+                            <div class="flex items-center justify-between">
+                                <span class="text-4xl">✅</span>
+
+                                <span class="text-green-600 font-semibold">
+                                    100%
+                                </span>
+                            </div>
+
+                            <h3 class="text-3xl font-bold mt-5">
+                                7
+                            </h3>
+
+                            <p class="text-slate-500 mt-2">
+                                Completed Courses
+                            </p>
+                        </div>
+
+                        <!-- Progress -->
+                        <div class="bg-white border rounded-2xl p-6 hover:shadow-md transition">
+                            <div class="flex items-center justify-between">
+                                <span class="text-4xl">⏳</span>
+
+                                <span class="text-orange-600 font-semibold">
+                                    Active
+                                </span>
+                            </div>
+
+                            <h3 class="text-3xl font-bold mt-5">
+                                5
+                            </h3>
+
+                            <p class="text-slate-500 mt-2">
+                                Courses in Progress
+                            </p>
+                        </div>
+
+                        <!-- Certificates -->
+                        <div class="bg-white border rounded-2xl p-6 hover:shadow-md transition">
+                            <div class="flex items-center justify-between">
+                                <span class="text-4xl">🏆</span>
+
+                                <span class="text-yellow-600 font-semibold">
+                                    New
+                                </span>
+                            </div>
+
+                            <h3 class="text-3xl font-bold mt-5">
+                                4
+                            </h3>
+
+                            <p class="text-slate-500 mt-2">
+                                Certificates Earned
+                            </p>
+                        </div>
+
+                        <!-- Hours -->
+                        <div class="bg-white border rounded-2xl p-6 hover:shadow-md transition">
+                            <div class="flex items-center justify-between">
+                                <span class="text-4xl">⏱️</span>
+
+                                <span class="text-indigo-600 font-semibold">
+                                    +8 hrs
+                                </span>
+                            </div>
+
+                            <h3 class="text-3xl font-bold mt-5">
+                                126
+                            </h3>
+
+                            <p class="text-slate-500 mt-2">
+                                Learning Hours
+                            </p>
+                        </div>
+
+                        <!-- Weekly Progress -->
+                        <div class="bg-white border rounded-2xl p-6 hover:shadow-md transition">
+                            <div class="flex items-center justify-between">
+                                <span class="text-4xl">📈</span>
+
+                                <span class="text-blue-600 font-semibold">
+                                    +12%
+                                </span>
+                            </div>
+
+                            <h3 class="text-3xl font-bold mt-5">
+                                82%
+                            </h3>
+
+                            <p class="text-slate-500 mt-2">
+                                Weekly Progress
+                            </p>
+
+                            <!-- Progress Bar -->
+                            <div class="mt-5 w-full h-2 bg-slate-200 rounded-full">
+                                <div class="w-4/5 h-full bg-blue-600 rounded-full"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!--================ Course Categories ================-->
+                <section class="mt-8">
+
+                    <!-- Heading -->
+                    <div class="flex items-center justify-between mb-6">
+                        <div>
+                            <h2 class="text-2xl font-bold">
+                                Course Categories
+                            </h2>
+
+                            <p class="text-slate-500 mt-1">
+                                Choose a learning path and continue your journey.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Categories -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+
+                        <!-- Frontend -->
+                        <article class="bg-white border rounded-2xl p-6 hover:shadow-md transition">
+                            <div class="flex items-center justify-between">
+                                <span class="text-5xl">🌐</span>
+
+                                <span class="bg-green-100 text-green-700 text-xs px-3 py-1 rounded-full">
+                                    Beginner
+                                </span>
+                            </div>
+
+                            <h3 class="text-xl font-bold mt-5">
+                                Frontend Development
+                            </h3>
+
+                            <p class="text-slate-500 text-sm mt-2">
+                                HTML, CSS, JavaScript, Tailwind CSS and React.
+                            </p>
+
+                            <div class="mt-5">
+                                <div class="flex justify-between text-sm mb-2">
+                                    <span>Progress</span>
+                                    <span>65%</span>
+                                </div>
+
+                                <div class="w-full h-2 bg-slate-200 rounded-full">
+                                    <div class="w-2/3 h-full bg-blue-600 rounded-full"></div>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-between mt-5 text-sm text-slate-500">
+                                <span>42 Lessons</span>
+                                <span>18 Hours</span>
+                            </div>
+
+                            <button
+                                class="w-full mt-6 border border-slate-300 hover:bg-slate-100 py-3 rounded-lg transition">
+                                Continue Learning
+                            </button>
+
+                        </article>
+
+                        <!-- Backend -->
+                        <article class="bg-white border rounded-2xl p-6 hover:shadow-md transition">
+                            <div class="flex items-center justify-between">
+                                <span class="text-5xl">⚙️</span>
+
+                                <span class="bg-yellow-100 text-yellow-700 text-xs px-3 py-1 rounded-full">
+                                    Intermediate
+                                </span>
+                            </div>
+
+                            <h3 class="text-xl font-bold mt-5">
+                                Backend Development
+                            </h3>
+
+                            <p class="text-slate-500 text-sm mt-2">
+                                Node.js, Express.js, REST APIs and Authentication.
+                            </p>
+
+                            <div class="mt-5">
+                                <div class="flex justify-between text-sm mb-2">
+                                    <span>Progress</span>
+                                    <span>30%</span>
+                                </div>
+
+                                <div class="w-full h-2 bg-slate-200 rounded-full">
+                                    <div class="w-1/3 h-full bg-green-600 rounded-full"></div>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-between mt-5 text-sm text-slate-500">
+                                <span>35 Lessons</span>
+                                <span>20 Hours</span>
+                            </div>
+
+                            <button
+                                class="w-full mt-6 border border-slate-300 hover:bg-slate-100 py-3 rounded-lg transition">
+                                Continue Learning
+                            </button>
+                        </article>
+
+                        <!-- Database -->
+                        <article class="bg-white border rounded-2xl p-6 hover:shadow-md transition">
+                            <div class="flex items-center justify-between">
+                                <span class="text-5xl">🗄️</span>
+
+                                <span class="bg-blue-100 text-blue-700 text-xs px-3 py-1 rounded-full">
+                                    Beginner
+                                </span>
+                            </div>
+
+                            <h3 class="text-xl font-bold mt-5">
+                                Database
+                            </h3>
+
+                            <p class="text-slate-500 text-sm mt-2">
+                                SQL, MySQL and MongoDB fundamentals.
+                            </p>
+
+                            <div class="mt-5">
+                                <div class="flex justify-between text-sm mb-2">
+                                    <span>Progress</span>
+                                    <span>15%</span>
+                                </div>
+
+                                <div class="w-full h-2 bg-slate-200 rounded-full">
+                                    <div class="w-1/6 h-full bg-purple-600 rounded-full"></div>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-between mt-5 text-sm text-slate-500">
+                                <span>28 Lessons</span>
+                                <span>15 Hours</span>
+                            </div>
+
+                            <button
+                                class="w-full mt-6 border border-slate-300 hover:bg-slate-100 py-3 rounded-lg transition">
+                                Start Learning
+                            </button>
+                        </article>
+
+                        <!-- Programming -->
+                        <article class="bg-white border rounded-2xl p-6 hover:shadow-md transition">
+                            <div class="flex items-center justify-between">
+                                <span class="text-5xl">💻</span>
+
+                                <span class="bg-orange-100 text-orange-700 text-xs px-3 py-1 rounded-full">
+                                    Beginner
+                                </span>
+                            </div>
+
+                            <h3 class="text-xl font-bold mt-5">
+                                Programming Languages
+                            </h3>
+
+                            <p class="text-slate-500 text-sm mt-2">
+                                C, C++, Java, Python and JavaScript.
+                            </p>
+
+                            <div class="mt-5">
+                                <div class="flex justify-between text-sm mb-2">
+                                    <span>Progress</span>
+                                    <span>50%</span>
+                                </div>
+
+                                <div class="w-full h-2 bg-slate-200 rounded-full">
+                                    <div class="w-1/2 h-full bg-orange-500 rounded-full"></div>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-between mt-5 text-sm text-slate-500">
+                                <span>60 Lessons</span>
+                                <span>32 Hours</span>
+                            </div>
+
+                            <button
+                                class="w-full mt-6 border border-slate-300 hover:bg-slate-100 py-3 rounded-lg transition">
+                                Continue Learning
+                            </button>
+                        </article>
+
+                        <!-- DevOps -->
+                        <article class="bg-white border rounded-2xl p-6 hover:shadow-md transition">
+                            <div class="flex items-center justify-between">
+                                <span class="text-5xl">☁️</span>
+
+                                <span class="bg-red-100 text-red-700 text-xs px-3 py-1 rounded-full">
+                                    Advanced
+                                </span>
+                            </div>
+
+                            <h3 class="text-xl font-bold mt-5">
+                                DevOps
+                            </h3>
+
+                            <p class="text-slate-500 text-sm mt-2">
+                                Git, GitHub, Docker and CI/CD basics.
+                            </p>
+
+                            <div class="mt-5">
+                                <div class="flex justify-between text-sm mb-2">
+                                    <span>Progress</span>
+                                    <span>0%</span>
+                                </div>
+
+                                <div class="w-full h-2 bg-slate-200 rounded-full"></div>
+                            </div>
+
+                            <div class="flex justify-between mt-5 text-sm text-slate-500">
+                                <span>24 Lessons</span>
+                                <span>18 Hours</span>
+                            </div>
+
+                            <button
+                                class="w-full mt-6 border border-slate-300 hover:bg-slate-100 py-3 rounded-lg transition">
+                                Start Learning
+                            </button>
+                        </article>
+
+                        <!-- AI -->
+                        <article class="bg-white border rounded-2xl p-6 hover:shadow-md transition">
+                            <div class="flex items-center justify-between">
+                                <span class="text-5xl">🤖</span>
+
+                                <span class="bg-purple-100 text-purple-700 text-xs px-3 py-1 rounded-full">
+                                    Advanced
+                                </span>
+                            </div>
+
+                            <h3 class="text-xl font-bold mt-5">
+                                AI & Machine Learning
+                            </h3>
+
+                            <p class="text-slate-500 text-sm mt-2">
+                                Python, AI fundamentals and Machine Learning basics.
+                            </p>
+
+                            <div class="mt-5">
+                                <div class="flex justify-between text-sm mb-2">
+                                    <span>Progress</span>
+                                    <span>10%</span>
+                                </div>
+
+                                <div class="w-full h-2 bg-slate-200 rounded-full">
+                                    <div class="w-[10%] h-full bg-purple-600 rounded-full"></div>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-between mt-5 text-sm text-slate-500">
+                                <span>40 Lessons</span>
+                                <span>28 Hours</span>
+                            </div>
+
+                            <button
+                                class="w-full mt-6 border border-slate-300 hover:bg-slate-100 py-3 rounded-lg transition">
+                                Start Learning
+                            </button>
+                        </article>
+                    </div>
+                </section>
+
+                <!--================ Continue Learning ================-->
+                <section class="mt-8">
+
+                    <!-- Heading -->
+                    <div class="flex items-center justify-between mb-6">
+                        <div>
+                            <h2 class="text-2xl font-bold">
+                                Continue Learning
+                            </h2>
+
+                            <p class="text-slate-500 mt-1">
+                                Pick up where you left off and keep progressing.
+                            </p>
+                        </div>
+
+                        <a href="#" class="text-blue-600 hover:underline font-medium">
+                            View All →
+                        </a>
+                    </div>
+
+                    <!-- Continue Learning Cards -->
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+                        <!-- Current Course -->
+                        <article class="lg:col-span-2 bg-white border rounded-2xl p-6 hover:shadow-md transition">
+                            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+
+                                <!-- Left -->
+                                <div>
+                                    <span
+                                        class="inline-flex bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-semibold">
+                                        ▶ Current Course
+                                    </span>
+
+                                    <h3 class="text-2xl font-bold mt-5">
+                                        React.js Masterclass
+                                    </h3>
+
+                                    <p class="text-slate-500 mt-2">
+                                        Continue building reusable components and learning React Hooks.
+                                    </p>
+
+                                    <div class="mt-6">
+                                        <div class="flex justify-between text-sm mb-2">
+                                            <span>Course Progress</span>
+
+                                            <span class="font-semibold text-blue-600">
+                                                48%
+                                            </span>
+                                        </div>
+
+                                        <div class="w-full h-3 bg-slate-200 rounded-full">
+                                            <div class="w-1/2 h-full bg-blue-600 rounded-full"></div>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex flex-wrap gap-6 mt-6 text-sm text-slate-500">
+                                        <span>📖 Lesson 18 / 37</span>
+
+                                        <span>⏱️ 6 Hours Left</span>
+                                    </div>
+                                </div>
+
+                                <!-- Right -->
+                                <div class="flex flex-col gap-3">
+                                    <button
+                                        class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-lg transition">
+                                        Continue Learning
+                                    </button>
+
+                                    <button
+                                        class="border border-slate-300 hover:bg-slate-100 px-6 py-3 rounded-lg transition">
+                                        View Course
+                                    </button>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Daily Summary -->
+                        <article class="bg-white border rounded-2xl p-6 hover:shadow-md transition">
+                            <h3 class="text-xl font-bold">
+                                Today's Learning
+                            </h3>
+
+                            <div class="space-y-5 mt-6">
+                                <div>
+                                    <p class="text-sm text-slate-500">
+                                        🎥 Last Watched Lesson
+                                    </p>
+
+                                    <h4 class="font-semibold mt-1">
+                                        React Components
+                                    </h4>
+                                </div>
+
+                                <div>
+                                    <p class="text-sm text-slate-500">
+                                        ⏱️ Remaining Time
+                                    </p>
+
+                                    <h4 class="font-semibold mt-1">
+                                        6 Hours
+                                    </h4>
+                                </div>
+
+                                <div>
+                                    <p class="text-sm text-slate-500">
+                                        ⭐ Recently Completed
+                                    </p>
+
+                                    <h4 class="font-semibold mt-1">
+                                        JSX Basics
+                                    </h4>
+                                </div>
+                            </div>
+
+                            <button
+                                class="w-full mt-8 bg-green-600 hover:bg-green-700 text-white font-semibold py-3 rounded-lg transition">
+                                Resume Course
+                            </button>
+                        </article>
+                    </div>
+                </section>
+
+                <!-- ================= Learning Modules ================= -->
+                <section class="mt-10">
+
+                    <!-- Section Header -->
+                    <div class="flex items-center justify-between mb-6">
+                        <div>
+                            <h2 class="text-2xl font-bold text-slate-800">
+                                Learning Modules
+                            </h2>
+
+                            <p class="text-slate-500 mt-1">
+                                Complete every module to become a Full Stack Developer.
+                            </p>
+                        </div>
+
+                        <a href="#" class="text-blue-600 font-medium hover:underline">
+                            View Full Roadmap →
+                        </a>
+                    </div>
+
+                    <!-- Modules Grid -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+
+                        <!-- HTML & CSS -->
+                        <article class="bg-white border rounded-2xl p-6 hover:shadow-lg transition">
+                            <div class="flex justify-between items-center">
+                                <span class="text-5xl">📘</span>
+
+                                <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-semibold">
+                                    Beginner
+                                </span>
+                            </div>
+
+                            <h3 class="text-xl font-bold mt-5">
+                                HTML & CSS
+                            </h3>
+
+                            <p class="text-slate-500 mt-2 text-sm">
+                                Build responsive webpages using HTML5 and modern CSS.
+                            </p>
+
+                            <div class="mt-5">
+                                <div class="flex justify-between text-sm mb-2">
+                                    <span>Progress</span>
+                                    <span>100%</span>
+                                </div>
+
+                                <div class="w-full h-2 bg-slate-200 rounded-full">
+                                    <div class="w-full h-full bg-green-600 rounded-full"></div>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-between mt-5 text-sm text-slate-500">
+                                <span>25 Lessons</span>
+                                <span>15 Hours</span>
+                            </div>
+
+                            <button
+                                class="w-full mt-6 bg-green-600 hover:bg-green-700 text-white py-3 rounded-lg transition">
+                                Completed
+                            </button>
+                        </article>
+
+                        <!-- JavaScript -->
+                        <article class="bg-white border rounded-2xl p-6 hover:shadow-lg transition">
+                            <div class="flex justify-between items-center">
+                                <span class="text-5xl">⚡</span>
+
+                                <span
+                                    class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-xs font-semibold">
+                                    Intermediate
+                                </span>
+                            </div>
+
+                            <h3 class="text-xl font-bold mt-5">
+                                JavaScript
+                            </h3>
+
+                            <p class="text-slate-500 mt-2 text-sm">
+                                Learn ES6, DOM, APIs and modern JavaScript concepts.
+                            </p>
+
+                            <div class="mt-5">
+                                <div class="flex justify-between text-sm mb-2">
+                                    <span>Progress</span>
+                                    <span>70%</span>
+                                </div>
+
+                                <div class="w-full h-2 bg-slate-200 rounded-full">
+                                    <div class="w-[70%] h-full bg-blue-600 rounded-full"></div>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-between mt-5 text-sm text-slate-500">
+                                <span>40 Lessons</span>
+                                <span>28 Hours</span>
+                            </div>
+
+                            <button
+                                class="w-full mt-6 bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg transition">
+                                Continue
+                            </button>
+                        </article>
+
+                        <!-- React -->
+                        <article class="bg-white border rounded-2xl p-6 hover:shadow-lg transition">
+                            <div class="flex justify-between items-center">
+                                <span class="text-5xl">⚛️</span>
+                                <span
+                                    class="bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-xs font-semibold">
+                                    Intermediat
+                                </span>
+                            </div>
+
+                            <h3 class="text-xl font-bold mt-5">
+                                React.js
+                            </h3>
+
+                            <p class="text-slate-500 mt-2 text-sm">
+                                Components, Hooks, Routing and State Management.
+                            </p>
+
+                            <div class="mt-5">
+                                <div class="flex justify-between text-sm mb-2">
+                                    <span>Progress</span>
+                                    <span>48%</span>
+                                </div>
+
+                                <div class="w-full h-2 bg-slate-200 rounded-full">
+                                    <div class="w-[48%] h-full bg-blue-600 rounded-full"></div>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-between mt-5 text-sm text-slate-500">
+                                <span>37 Lessons</span>
+                                <span>24 Hours</span>
+                            </div>
+
+                            <button
+                                class="w-full mt-6 bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg transition">
+                                Continue
+                            </button>
+                        </article>
+
+                        <!-- Node.js -->
+                        <article class="bg-white border rounded-2xl p-6 hover:shadow-lg transition">
+                            <div class="flex justify-between items-center">
+                                <span class="text-5xl">🟢</span>
+
+                                <span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-semibold">
+                                    Intermediate
+                                </span>
+                            </div>
+
+                            <h3 class="text-xl font-bold mt-5">
+                                Node.js
+                            </h3>
+
+                            <p class="text-slate-500 mt-2 text-sm">
+                                Build REST APIs using Express.js and Node.js.
+                            </p>
+
+                            <div class="mt-5">
+                                <div class="flex justify-between text-sm mb-2">
+                                    <span>Progress</span>
+                                    <span>20%</span>
+                                </div>
+
+                                <div class="w-full h-2 bg-slate-200 rounded-full">
+                                    <div class="w-1/5 h-full bg-blue-600 rounded-full"></div>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-between mt-5 text-sm text-slate-500">
+                                <span>30 Lessons</span>
+                                <span>22 Hours</span>
+                            </div>
+
+                            <button
+                                class="w-full mt-6 border border-slate-300 hover:bg-slate-100 py-3 rounded-lg transition">
+                                Start Learning
+                            </button>
+                        </article>
+
+                        <!-- Database -->
+                        <article class="bg-white border rounded-2xl p-6 hover:shadow-lg transition">
+                            <div class="flex justify-between items-center">
+                                <span class="text-5xl">🗄️</span>
+                                <span
+                                    class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-xs font-semibold">
+                                    Beginner
+                                </span>
+                            </div>
+
+                            <h3 class="text-xl font-bold mt-5">
+                                Database
+                            </h3>
+
+                            <p class="text-slate-500 mt-2 text-sm">
+                                Master SQL, MySQL and MongoDB fundamentals.
+                            </p>
+
+                            <div class="mt-5">
+                                <div class="flex justify-between text-sm mb-2">
+                                    <span>Progress</span>
+                                    <span>10%</span>
+                                </div>
+
+                                <div class="w-full h-2 bg-slate-200 rounded-full">
+                                    <div class="w-[10%] h-full bg-purple-600 rounded-full"></div>
+                                </div>
+                            </div>
+
+                            <div class="flex justify-between mt-5 text-sm text-slate-500">
+                                <span>22 Lessons</span>
+                                <span>18 Hours</span>
+                            </div>
+
+                            <button
+                                class="w-full mt-6 border border-slate-300 hover:bg-slate-100 py-3 rounded-lg transition">
+                                Start Learning
+                            </button>
+                        </article>
+
+                        <!-- Deployment -->
+                        <article class="bg-white border rounded-2xl p-6 hover:shadow-lg transition">
+                            <div class="flex justify-between items-center">
+                                <span class="text-5xl">☁️</span>
+
+                                <span class="bg-red-100 text-red-700 px-3 py-1 rounded-full text-xs font-semibold">
+                                    Advanced
+                                </span>
+                            </div>
+
+                            <h3 class="text-xl font-bold mt-5">
+                                Deployment
+                            </h3>
+
+                            <p class="text-slate-500 mt-2 text-sm">
+                                Deploy full-stack applications using Vercel, Netlify and Render.
+                            </p>
+
+                            <div class="mt-5">
+                                <div class="flex justify-between text-sm mb-2">
+                                    <span>Progress</span>
+                                    <span>0%</span>
+                                </div>
+
+                                <div class="w-full h-2 bg-slate-200 rounded-full"></div>
+                            </div>
+
+                            <div class="flex justify-between mt-5 text-sm text-slate-500">
+                                <span>15 Lessons</span>
+                                <span>12 Hours</span>
+                            </div>
+
+                            <button
+                                class="w-full mt-6 border border-slate-300 hover:bg-slate-100 py-3 rounded-lg transition">
+                                Start Learning
+                            </button>
+                        </article>
+                    </div>
+                </section>
+
+                <!--================ Learning Resources & Practice ================-->
+                <section class="mt-10">
+
+                    <!-- Section Header -->
+                    <div class="flex items-center justify-between mb-6">
+                        <div>
+                            <h2 class="text-2xl font-bold text-slate-800">
+                                Learning Resources & Practice
+                            </h2>
+
+                            <p class="text-slate-500 mt-1">
+                                Improve your skills with curated resources and daily practice.
+                            </p>
+                        </div>
+
+                        <a href="#" class="text-blue-600 hover:underline font-medium">
+                            Explore More →
+                        </a>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+                        <!-- Left Column -->
+                        <div class="lg:col-span-2 space-y-6">
+
+                            <!-- Recommended Videos -->
+                            <div class="bg-white border rounded-2xl p-6">
+                                <div class="flex items-center justify-between">
+                                    <h3 class="text-xl font-bold">
+                                        📺 Recommended Videos
+                                    </h3>
+
+                                    <a href="#" class="text-blue-600 text-sm hover:underline">
+                                        View All
+                                    </a>
+                                </div>
+
+                                <div class="mt-6 space-y-4">
+                                    <div class="flex justify-between items-center border rounded-xl p-4">
+                                        <div>
+                                            <h4 class="font-semibold">
+                                                React Components Explained
+                                            </h4>
+
+                                            <p class="text-sm text-slate-500">
+                                                Duration • 25 Minutes
+                                            </p>
+                                        </div>
+
+                                        <button
+                                            class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg transition">
+                                            Watch
+                                        </button>
+                                    </div>
+
+                                    <div class="flex justify-between items-center border rounded-xl p-4">
+                                        <div>
+                                            <h4 class="font-semibold">
+                                                JavaScript ES6 Complete Guide
+                                            </h4>
+
+                                            <p class="text-sm text-slate-500">
+                                                Duration • 42 Minutes
+                                            </p>
+                                        </div>
+
+                                        <button
+                                            class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-lg transition">
+                                            Watch
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Documentation -->
+                            <div class="bg-white border rounded-2xl p-6">
+                                <h3 class="text-xl font-bold">
+                                    📖 Official Documentation
+                                </h3>
+
+                                <div class="grid md:grid-cols-2 gap-4 mt-6">
+                                    <a href="#"
+                                        class="border border-black/50 rounded-xl p-5 hover:bg-slate-50 transition">
+                                        <h4 class="font-semibold">
+                                            React Documentation
+                                        </h4>
+
+                                        <p class="text-sm text-slate-500 mt-2">
+                                            Learn React from the official documentation.
+                                        </p>
+                                    </a>
+
+                                    <a href="#"
+                                        class="border border-black/50 rounded-xl p-5 hover:bg-slate-50 transition">
+                                        <h4 class="font-semibold">
+                                            MDN JavaScript
+                                        </h4>
+
+                                        <p class="text-sm text-slate-500 mt-2">
+                                            Complete JavaScript reference and tutorials.
+                                        </p>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Coding Practice -->
+                            <div class="bg-white border rounded-2xl p-6">
+                                <h3 class="text-xl font-bold">
+                                    💻 Coding Practice Platforms
+                                </h3>
+
+                                <div class="grid md:grid-cols-3 gap-4 mt-6">
+                                    <button
+                                        class="border border-black/50 rounded-xl py-4 hover:bg-slate-100 transition">
+                                        LeetCode
+                                    </button>
+
+                                    <button
+                                        class="border border-black/50 rounded-xl py-4 hover:bg-slate-100 transition">
+                                        HackerRank
+                                    </button>
+
+                                    <button
+                                        class="border border-black/50 rounded-xl py-4 hover:bg-slate-100 transition">
+                                        CodeWars
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Column -->
+                        <div class="space-y-6">
+
+                            <!-- Daily Goal -->
+                            <div class="bg-white border rounded-2xl p-6">
+                                <h3 class="text-xl font-bold">
+                                    🏆 Daily Practice Goal
+                                </h3>
+
+                                <div class="mt-6">
+                                    <div class="flex justify-between text-sm mb-2">
+                                        <span>Today's Progress</span>
+
+                                        <span class="font-semibold text-blue-600">
+                                            3 / 5 Tasks
+                                        </span>
+                                    </div>
+
+                                    <div class="w-full h-3 bg-slate-200 rounded-full">
+                                        <div class="w-3/5 h-full bg-blue-600 rounded-full"></div>
+                                    </div>
+                                </div>
+
+                                <ul class="mt-6 space-y-3 text-sm">
+                                    <li>✅ Watch React Video</li>
+                                    <li>✅ Read Documentation</li>
+                                    <li>✅ Solve 2 Problems</li>
+                                    <li>⬜ Complete Quiz</li>
+                                    <li>⬜ Finish Mini Challenge</li>
+                                </ul>
+                            </div>
+
+                            <!-- Quiz -->
+                            <div class="bg-white border rounded-2xl p-6">
+                                <h3 class="text-xl font-bold">
+                                    📝 Quiz
+                                </h3>
+
+                                <p class="text-slate-500 mt-3">
+                                    Test your knowledge after completing each module.
+                                </p>
+
+                                <button
+                                    class="w-full mt-6 bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg transition">
+                                    Start Quiz
+                                </button>
+                            </div>
+
+                            <!-- Mini Challenge -->
+                            <div class="bg-white border rounded-2xl p-6">
+                                <h3 class="text-xl font-bold">
+                                    🎯 Mini Challenge
+                                </h3>
+
+                                <p class="text-slate-500 mt-3">
+                                    Build a responsive landing page using Flexbox and Grid.
+                                </p>
+
+                                <button
+                                    class="w-full mt-6 border border-black hover:bg-slate-100 py-3 rounded-lg transition">
+                                    Start Challenge
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+                <!--================ Certificates & Achievements ================-->
+                <section class="mt-10">
+                    <div class="flex items-center justify-between mb-6">
+                        <div>
+                            <h2 class="text-2xl font-bold">
+                                Certificates & Achievements
+                            </h2>
+
+                            <p class="text-slate-500 mt-1">
+                                Celebrate your learning journey.
+                            </p>
+                        </div>
+
+                        <a href="#" class="text-blue-600 hover:underline">
+                            View All →
+                        </a>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
+                        <!-- Certificate -->
+                        <div class="bg-white border rounded-2xl p-6">
+                            <div class="text-5xl">
+                                🏆
+                            </div>
+
+                            <h3 class="text-xl font-bold mt-5">
+                                HTML & CSS Certificate
+                            </h3>
+
+                            <p class="text-slate-500 mt-2">
+                                Successfully completed Beginner Web Development.
+                            </p>
+
+                            <button class="mt-6 w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700">
+                                Download Certificate
+                            </button>
+                        </div>
+
+                        <!-- Badge -->
+                        <div class="bg-white border rounded-2xl p-6">
+                            <div class="text-5xl">
+                                🔥
+                            </div>
+
+                            <h3 class="text-xl font-bold mt-5">
+                                21 Day Learning Streak
+                            </h3>
+
+                            <p class="text-slate-500 mt-2">
+                                Keep learning daily to unlock new rewards.
+                            </p>
+                        </div>
+
+                        <!-- Achievement -->
+                        <div class="bg-white border rounded-2xl p-6">
+                            <div class="text-5xl">
+                                ⭐
+                            </div>
+
+                            <h3 class="text-xl font-bold mt-5">
+                                React Beginner Badge
+                            </h3>
+
+                            <p class="text-slate-500 mt-2">
+                                Completed 50% of React Roadmap.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+
+
+                <!--================ Upcoming Learning Schedule ================-->
+                <section class="mt-10">
+                    <div class="flex items-center justify-between mb-6">
+                        <div>
+                            <h2 class="text-2xl font-bold">
+                                Upcoming Learning Schedule
+                            </h2>
+
+                            <p class="text-slate-500 mt-1">
+                                Stay on track with your weekly plan.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="grid lg:grid-cols-3 gap-6">
+                        <!-- Today's Lesson -->
+                        <div class="bg-white border rounded-2xl p-6">
+                            <h3 class="font-bold text-lg">
+                                📅 Today
+                            </h3>
+
+                            <ul class="mt-5 space-y-3">
+                                <li>▶ React Components</li>
+                                <li>▶ React Props</li>
+                                <li>▶ Practice Questions</li>
+                            </ul>
+                        </div>
+
+                        <!-- Weekly Plan -->
+                        <div class="bg-white border rounded-2xl p-6">
+                            <h3 class="font-bold text-lg">
+                                📖 This Week
+                            </h3>
+
+                            <ul class="mt-5 space-y-3">
+                                <li>Monday • React</li>
+                                <li>Tuesday • JavaScript</li>
+                                <li>Wednesday • Node.js</li>
+                                <li>Thursday • Database</li>
+                                <li>Friday • Mini Project</li>
+                            </ul>
+                        </div>
+
+                        <!-- Deadlines -->
+                        <div class="bg-white border rounded-2xl p-6">
+                            <h3 class="font-bold text-lg">
+                                ⏰ Upcoming Deadlines
+                            </h3>
+
+                            <ul class="mt-5 space-y-3">
+                                <li>Mini Project • 15 July</li>
+                                <li>React Quiz • 18 July</li>
+                                <li>Portfolio Update • 20 July</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <!--================ Footer ================-->
+            <footer class="mt-12 border-t py-8 text-center text-black">
+
+                <h3 class="font-bold text-lg">
+                    CareerMap AI
+                </h3>
+
+                <p class="mt-2">
+                    Your Personalized AI Career Companion.
+                </p>
+
+                <div class="flex justify-center gap-6 mt-5">
+                    <a href="#">Dashboard</a>
+                    <a href="#">Roadmap</a>
+                    <a href="#">Learning</a>
+                    <a href="#">AI Mentor</a>
+                    <a href="#">Profile</a>
+                </div>
+
+                <p class="mt-6 text-sm">
+                    © 2026 CareerMap AI. Built with ❤️ by BCA Students.
+                </p>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Logout Modal -->
+            <div id="logoutModal"
+                class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 backdrop-blur-sm">
+                <div class="w-[90%] max-w-md rounded-2xl bg-white dark:bg-slate-900 shadow-2xl p-6">
+                    <div class="flex items-center gap-4">
+                        <div
+                            class="flex h-14 w-14 items-center justify-center rounded-full bg-red-100 dark:bg-red-500/20">
+                            <span class="text-2xl">🚪</span>
+                        </div>
+
+                        <div>
+                            <h2 class="text-xl font-bold text-slate-900 dark:text-white">
+                                Logout?
+                            </h2>
+
+                            <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
+                                Are you sure you want to sign out of CareerMap AI?
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 flex justify-end gap-3">
+                        <button id="cancelLogout"
+                            class="rounded-xl border text-white border-slate-300 px-5 py-2 font-medium hover:bg-slate-100 dark:border-slate-700 dark:hover:bg-slate-800">
+                            Cancel
+                        </button>
+
+                        <button id="confirmLogout"
+                            class="rounded-xl bg-red-600 px-5 py-2 font-medium text-white hover:bg-red-700">
+                            Logout
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+    <script src="assets/js/learning.js"></script>
+    <script src="assets/js/guard.js"></script>
+    <script src="assets/js/logout.js"></script>
+</body>
+
+</html>

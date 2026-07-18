@@ -1,0 +1,633 @@
+@font-face {
+    font-family: 'CSDiora';
+    src: url('./assets/fonts/CS-Diora.otf') format('opentype');
+}
+
+.logo-font {
+    font-family: 'CSDiora', sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    overflow-y:scroll;
+    scroll-snap-type:y mandatory;
+}
+
+section{
+    min-height:100vh;
+    scroll-snap-align:start;
+    scroll-snap-stop:always;
+}
+
+
+.roadmap-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:16px 20px;
+    border-radius:16px;
+    background:#F8FAFC;
+    border:1px solid #E2E8F0;
+    transition:.3s;
+}
+
+.roadmap-item:hover{
+    transform:translateY(-3px);
+    box-shadow:0 12px 24px rgba(0,0,0,.08);
+}
+
+.road-card{
+    position:relative;
+    display:flex;
+    align-items:center;
+    gap:16px;
+    width:220px;
+    padding:18px 20px;
+    border-radius:20px;
+    background:#ffffff;
+    border:1px solid #E2E8F0;
+    box-shadow:0 20px 40px rgba(15,23,42,.08);
+    transition:.3s;
+    z-index:10;
+}
+
+@media (min-width:640px){
+    .road-card{
+        width:280px;
+    }
+}
+
+.complete{
+    background:#ECFDF5;
+    color:#15803D;
+    border-color:#BBF7D0;
+}
+
+.active{
+    background:#EEF2FF;
+    border-color:#C7D2FE;
+    color:#4338CA;
+    font-weight:600;
+}
+
+.road-card:hover{
+    transform:translateY(-8px) scale(1.03);
+    box-shadow:0 35px 60px rgba(59,130,246,.18);
+}
+
+.road-card h3{
+    color:#0F172A;
+    transition:color .3s ease;
+}
+
+.road-title{
+    color:#0F172A;
+    transition:color .3s;
+}
+
+html.dark .road-title{
+    color:#fff;
+}
+
+.road-card p{
+    margin-top:6px;
+    font-size:14px;
+    color:#64748B;
+}
+
+
+/*AI CAREER COACH*/
+#ai-coach{
+    overflow:hidden;
+}
+
+    /* Floating Card */
+.ai-card{
+    width:100%;
+    max-width:700px;
+    min-height: 34px;
+    border-radius:28px;
+    overflow:hidden;
+    animation:floatCard 5s ease-in-out infinite;
+}
+
+@keyframes floatCard{
+    0%,100%{
+    transform:translateY(0);
+}
+
+50%{
+    transform:translateY(-12px);
+    }
+}
+
+    /* Typing Dots */
+
+#typingDots span{
+    animation:typing 1.3s infinite;
+}
+
+#typingDots span:nth-child(2){
+    animation-delay:.2s;
+}
+
+#typingDots span:nth-child(3){
+    animation-delay:.4s;
+}
+
+@keyframes typing{
+    0%,80%,100%{
+    opacity:.3;
+    transform:translateY(0);
+    }
+        40%{
+        opacity:1;
+        transform:translateY(-6px);
+    }
+}
+
+    /* Result Animation */
+
+#aiResult{
+    opacity:0;
+    transform:translateY(20px);
+    transition:.6s;
+}
+
+#aiResult.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+    /* Button Hover */
+
+.ai-btn{
+    transition:all .3s ease;
+}
+
+.ai-btn:hover{
+    transform:translateY(-4px);
+
+}
+
+    /* Feature Hover */
+
+.feature-item{
+    transition:.3s;
+}
+
+.feature-item:hover{
+    transform:translateX(10px);
+}
+
+.feature-title{
+    color:#0F172A;
+}
+
+html.dark .feature-title{
+    color:#FFFFFF !important;
+}
+
+    /*fade-up*/
+
+.fade-up{
+    opacity:0;
+    transform:translateY(50px);
+    transition:.8s;
+}
+
+.fade-up.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* ===========================================
+                FAQ
+=========================================== */
+
+.faq-content{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .4s ease,padding .3s ease;
+    padding:0 2rem;
+}
+
+.faq-content p{
+    padding-bottom:1.8rem;
+    color:#64748b;
+    line-height:1.8;
+}
+
+.faq-item{
+    transition:.3s;
+}
+
+.faq-item:hover{
+    transform:translateY(-3px);
+    box-shadow:0 20px 45px rgba(15,23,42,.08);
+}
+
+.faq-icon{
+    transition:.3s;
+}
+
+.faq-item.active .faq-icon{
+    transform:rotate(45deg);
+}
+
+.faq-item.active{
+    border-color:#3B82F6;
+}
+
+.faq-question{
+    color:#0F172A;
+}
+
+html.dark .faq-question{
+    color:#FFFFFF !important;
+}
+
+/* CTA Button Hover */
+
+.cta-btn{
+    transition:.3s ease;
+}
+
+.cta-btn:hover{
+    transform:translateY(-3px);
+}
+
+
+/* ===================================
+            FOOTER + Dark Mode
+=================================== */
+
+.footer{
+    background:#ffffff;
+    color:#0F172A;
+}
+
+/* Logo Title */
+
+.footer-title{
+    color:#0F172A;
+}
+
+.footer-subtitle{
+    color:#64748B;
+}
+
+/* Description */
+
+footer p{
+    color:#475569;
+}
+
+/* Links */
+
+footer a{
+    color:#334155;
+    transition:.3s;
+}
+
+footer a:hover{
+    color:#2563EB;
+}
+
+.footer-link{
+    color:#475569;
+}
+
+.footer-link:hover{
+    color:#2563EB;
+}
+
+html.dark .footer-link{
+    color:#CBD5E1;
+}
+
+html.dark .footer-link:hover{
+    color:#38BDF8;
+}
+
+/* Copyright */
+
+.footer-bottom{
+    color:#64748B;
+}
+
+html.dark .footer{
+    background:#000000;
+    color:#F8FAFC;
+}
+
+html.dark footer h2,
+html.dark footer h3,
+html.dark footer h4{
+    color:#FFFFFF;
+}
+
+html.dark footer p{
+    color:#CBD5E1;
+}
+
+html.dark .footer-title{
+    color:#FFFFFF;
+}
+
+html.dark footer a{
+    color:#E2E8F0;
+}
+
+html.dark .footer-title,
+html.dark .footer-subtitle{
+    color:#fff;
+}
+
+html.dark .footer-description,
+html.dark .footer-link{
+    color:#CBD5E1;
+}
+
+html.dark .footer-link:hover{
+    color:#38BDF8;
+}
+
+html.dark footer a:hover{
+    color:#38BDF8;
+}
+
+html.dark footer hr{
+    border-color:#000000;
+}
+
+html.dark .footer-bottom{
+    color:#000000;
+}
+
+/* ==========================
+        Dark Mode
+========================== */
+
+html{
+    transition:background .3s,color .3s;
+}
+
+html.dark{
+    background:#000000;
+    color:white;
+}
+
+html.dark nav{
+    background:rgba(0, 0, 0, 0.9);
+    border-color:#334155;
+    caret-color: white;
+}
+
+html.dark .chat-title{
+    color:white
+}
+
+html.dark .road-card{
+    background:#000000;
+    border-color:#334155;
+}
+
+html.dark section{
+    background:#000000;
+}
+
+html.dark .section-text{
+    color:#CBD5E1 !important;
+}
+
+html.dark .hero-title{
+    color:#ffffff !important;
+}
+html.dark .hero-text{
+    color:#ffffff;
+}
+
+html.dark .faq-item{
+    background:#ffffff;
+    border-color:#334155;
+}
+
+html.dark .faq-content p{
+    color:#000000;
+}
+
+
+/* Light Mode */
+
+.ai-message{
+    background:#F1F5F9;
+    color:#0F172A;
+}
+
+/* Dark Mode */
+
+html.dark .ai-message{
+    background:#010101;
+    color:#F8FAFC;
+}
+
+
+
+.online-text{
+    color:#64748B;
+}
+
+html.dark .online-text{
+    color:#CBD5E1;
+}
+
+.ai-card{
+    background:rgb(0, 0, 0);
+    animation:floatCard 5s ease-in-out infinite;
+}
+
+.chat-header{
+    border-bottom:1px solid #E2E8F0;
+}
+
+html.dark .chat-header{
+    border-color:#ffffff;
+}
+
+.mobile-link{
+    font-size:18px;
+    font-weight:600;
+    color:#334155;
+    transition:.3s;
+}
+
+.mobile-link:hover{
+    transform:translateX(10px);
+}
+
+html.dark .mobile-link{
+    color:#E2E8F0;
+}
+
+/* From Uiverse.io by gharsh11032000 */ 
+/* Transparent Animated Button */
+
+.animated-button {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    padding: 16px 36px;
+
+    border: none;
+    border-radius: 999px;
+
+    background: #2563EB;
+    color: #ffffff;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    cursor: pointer;
+    overflow: hidden;
+
+    box-shadow: 0 8px 30px rgba(37,99,235,.25);
+
+    transition: all .6s cubic-bezier(.23,1,.32,1);
+}
+
+.animated-button svg{
+    position:absolute;
+    width:22px;
+    fill:#ffffff;
+    z-index:2;
+    transition:all .7s cubic-bezier(.23,1,.32,1);
+}
+
+.animated-button .arr-1{
+    right:18px;
+}
+
+.animated-button .arr-2{
+    left:-30px;
+}
+
+.animated-button .text{
+    position:relative;
+    z-index:2;
+    transform:translateX(-12px);
+    transition:.7s;
+}
+
+.animated-button .circle{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:20px;
+    height:20px;
+    border-radius:50%;
+
+    background:#466ec0e0;
+
+    opacity:0;
+    transition:.7s;
+}
+
+.animated-button:hover{
+    color:#ffffff;
+    border-radius:16px;
+    box-shadow:0 18px 40px rgba(6,182,212,.35);
+}
+
+.animated-button:hover .arr-1{
+    right:-30px;
+}
+
+.animated-button:hover .arr-2{
+    left:18px;
+}
+
+.animated-button:hover .text{
+    transform:translateX(12px);
+}
+
+.animated-button:hover .circle{
+    width:260px;
+    height:260px;
+    opacity:1;
+}
+
+.animated-button:active{
+    transform:scale(.96);
+}
+
+.theme-toggle{
+    position:relative;
+    width:72px;
+    height:39px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 10px;
+    border:none;
+    border-radius:999px;
+    background:#E2E8F0;
+    cursor:pointer;
+    transition:.35s ease;
+}
+
+.toggle-icon{
+    font-size:17px;
+    z-index:2;
+    user-select:none;
+}
+
+.toggle-circle{
+    position:absolute;
+    left: 7px;
+    width:30px;
+    height:30px;
+    border-radius:50%;
+    background:#ffffff;
+    box-shadow:0 4px 12px rgba(0,0,0,.18);
+    transition:.35s ease;
+}
+
+/* Hover */
+
+.theme-toggle:hover{
+    transform:scale(1.04);
+}
+
+/* Dark */
+
+html.dark .theme-toggle{
+    background:#1E293B;
+}
+
+html.dark .toggle-circle{
+    left: 37px;
+    background:#0F172A;
+}
+
+html.dark .sun{
+    opacity:.35;
+}
+
+html.dark .moon{
+    opacity:1;
+}
+
+html:not(.dark) .sun{
+    opacity:1;
+}
+
+html:not(.dark) .moon{
+    opacity:.35;
+}

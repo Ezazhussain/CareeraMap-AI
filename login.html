@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-auto">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login | CareerMap AI</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+
+        <link rel="icon" href="assets/img/icon/logo.png">
+        <link rel="stylesheet" href="assets/css/login.css">
+    </head>
+
+    <body class="bg-white dark:bg-[#050816] transition-colors duration-500">
+        <div class="min-h-screen grid lg:grid-cols-2">
+
+            <!--left Panel-->
+            <section class="relative hidden lg:flex items-center justify-center bg-[#0B1120] overflow-hidden">
+
+                <!--Circles-->
+                <div class="orbit orbit-1"></div>
+                <div class="orbit orbit-2"></div>
+                <div class="orbit orbit-3"></div>
+                <div class="orbit orbit-4"></div>
+
+                <!--Center-->
+                <div class="login-left">
+                    <img src="assets/img/favi.png" alt="CareerMap AI">
+                </div>
+
+
+                <!--Floating Icons-->
+
+                <img src="assets/img/html-5.svg" class="tech-icon html">
+                <img src="assets/img/css-3.svg" class="tech-icon css">
+                <img src="assets/img/js.svg" class="tech-icon js">
+                <img src="assets/img/react.svg" class="tech-icon react">
+                <img src="assets/img/node.svg" class="tech-icon node">
+                <img src="assets/img/git.svg" class="tech-icon git">
+            </section>
+
+            <!--Right Panel-->
+            <section class="flex items-center justify-center px-8 bg-white dark:bg-[#050816]">
+
+                <div class="w-full max-w-md">
+
+                    <h2 class="text-5xl font-black text-black dark:text-white">
+                        Welcome Back
+                    </h2>
+
+                    <p class="mt-3 text-slate-500 dark:text-slate-400">
+                        Sign in to continue your journey.
+                    </p>
+
+                    <!--Google-->
+                    <button class="google-btn mt-10">
+                        <img src="assets/img/google.svg" class="w-6">
+
+                        Continue with Google
+                    </button>
+
+                    <!--Divivder-->
+                    <div class="divider">
+                        <span>OR</span>
+                    </div>
+
+                    <!--From-->
+                    <form class="space-y-6 mt-8" id="loginForm">
+                        <div>
+                            <label class="label text-white">
+                                Email
+                            </label>
+
+                            <input id="email" type="email" placeholder="Enter your email" class="input">
+                        </div>
+
+                        <div>
+                            <label class="label text-white">
+                                Password
+                            </label>
+                            <div class="relative">
+                                
+                                <input id="password" type="password" placeholder="Enter password"
+                                class="input pr-14">
+
+                                <button type="button" id="togglePassword" CLASS="absolute right-4 top-4">
+                                    👁
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="flex justify-between text-sm">
+                            <label class="flex gap-2 text-white">
+                                <input type="checkbox">
+                                Remember me
+                            </label>
+
+                            <a href="forgot-password.html" class="text-blue-500">
+                                Forgot Password?
+                            </a>
+                        </div>
+
+                        <button
+                            id="loginBtn"
+                            type="submit"
+                            class="login-btn">
+                            Sign In →
+                        </button>
+                    </form>
+
+                    <p class="mt-10 text-center text-slate-500 dark:text-slate-400">
+                        Don't have an account?
+                        <a href="register.html" class="text-blue-600">
+                            Register
+                        </a>
+                    </p>
+                </div>
+            </section>
+        </div>
+    <script src="assets/js/login.js"></script>
+    <script src="assets/js/auth-check.js"></script>
+    </body>
+</html>

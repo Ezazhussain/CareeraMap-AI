@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+            content="width=device-width, initial-scale=1.0">
+        <title>CareerMap AI</title>
+        <meta name="description" content="Discover career paths, track skills, and build a personalized AI-generated learning roadmap. Built for students by CareerMap AI.">
+
+        <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+
+        <link rel="stylesheet"
+                href="assets/css/input.css">
+        <link rel="stylesheet"
+                href="./assets/css/output.css"> 
+        <link rel="icon"
+                href="assets/img/icon/logo.png">
+        <link rel="stylesheet"
+                href="assets/css/style.css">
+    </head>
+
+    <body>
+        <header class="fixed top-4 left-0 w-full z-50 px-4">
+            <nav
+                class="max-w-7xl mx-auto
+                flex items-center justify-between
+                h-20
+                px-8
+                rounded-2xl
+                bg-white/70
+                backdrop-blur-xl
+                border border-black/8       0">
+
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-3">
+                    <img
+                        src="assets/img/favi.png"
+                        alt="CareerMap AI"
+                        class="w-30 h-30 object-contain">
+
+                    <div>
+                        <h2 class=" hero-title text-2xl font-bold tracking-tight text-black">
+                            CareerMap AI
+                        </h2>
+
+                        <p class="text-sm text-blue-900 font-medium">
+                            AI Career Companion
+                        </p>
+                    </div>
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden lg:flex items-center gap-5">
+
+                <a href="#features"
+                    class="hero-text relative text-slate-700  font-medium transition-all duration-300 hover:text-indigo-600 after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-indigo-600 after:transition-all hover:after:w-full">
+                    Features
+                </a>
+
+                <a href="#roadmaps"
+                    class="hero-text relative text-slate-700 font-medium transition-all duration-300 hover:text-indigo-600 after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-indigo-600 after:transition-all hover:after:w-full">
+                    Roadmaps
+                </a>
+
+                <a href="#categories"
+                    class="hero-text relative text-slate-700 font-medium transition-all duration-300 hover:text-indigo-600 after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-indigo-600 after:transition-all hover:after:w-full">
+                    Careers
+                </a>
+
+                <a href="#faq"
+                    class="hero-text relative text-slate-700 font-medium transition-all duration-300 hover:text-indigo-600 after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-indigo-600 after:transition-all hover:after:w-full">
+                    FAQ
+                </a>
+            </div>
+
+                <!-- Theme Toggle -->
+                <button id="themeToggle" class="theme-toggle">
+                    <span class="toggle-icon sun">
+                        ☀
+                    </span>
+
+                    <div class="toggle-circle"></div>
+
+                        <span class="toggle-icon moon">
+                            🌙
+                        </span>
+                </button>
+
+                <!-- Right Side -->
+                <div class="hidden lg:flex items-center gap-4">
+
+
+                    <a href="login.html"
+                class="hero-title  text-slate-700 hover:text-blue-600 transition hover:text-xl">
+                    Log In
+                </a>
+                    <button class="animated-button">
+
+                        <svg class="arr-1" viewBox="0 0 24 24">
+                            <path d="M12 5l7 7-7 7-1.4-1.4L15.2 13H5v-2h10.2l-4.6-4.6z"/>
+                        </svg>
+
+                        <a href="register.html">
+                            <span class="text">
+                                Get Started
+                            </span>
+                        </a>
+                        <span class="circle"></span>
+
+                        <svg class="arr-2" viewBox="0 0 24 24">
+                            <path d="M12 5l7 7-7 7-1.4-1.4L15.2 13H5v-2h10.2l-4.6-4.6z"/>
+                        </svg>
+
+                    </button>
+
+                </div>
+
+                <!-- Mobile Button -->
+                <button id="mobileBtn" class="lg:hidden flex flex-col gap-1.5">
+                    <span class="line w-6 h-0.5 bg-white rounded-full transition-all duration-300"></span>
+                    <span class="line w-6 h-0.5 bg-white rounded-full transition-all duration-300"></span>
+                    <span class="line w-6 h-0.5 bg-white rounded-full transition-all duration-300"></span>
+                </button>
+            </nav>
+        </header>
+
+        <!-- Mobile Menu -->
+
+        <div
+        id="mobileMenu"
+        class="fixed
+        top-24
+        left-4
+        right-4
+        bg-black
+        rounded-3xl
+        shadow-2xl
+        border border-slate-200/80
+        z-40
+
+        opacity-0
+        scale-95
+        -translate-y-4
+        pointer-events-none
+
+        transition-all
+        duration-300">
+
+            <div class="p-8">
+
+                <nav class="flex flex-col gap-6">
+                    <a href="#features" class="mobile-link" >Features</a>
+                    <a href="#roadmaps" class="mobile-link">Roadmaps</a>
+                    <a href="#categories" class="mobile-link">Careers</a>
+                    <a href="#faq" class="mobile-link">FAQ</a>
+                </nav>
+
+                <div class="border-t border-slate-200 dark:border-slate-700 my-8"></div>
+                <div class="flex flex-col gap-4">
+                    <a href="login.html"
+                    class="text-center py-3 rounded-xl border border-slate-300 hover:bg-gray-400 dark:border-slate-600 font-semibold">
+                        Login
+                    </a>
+
+                    <a href="register.html"
+                    class="text-center py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold transition">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+        </div>
+
+<!--===================================
+        HERO SECTION
+=====================================-->
+        <section id="hero" class="relative min-h-screen bg-[#f8faff] overflow-hidden flex items-center">
+
+                    <!-- Grid -->
+                    <div
+                    class="relative z-10
+                    max-w-7xl
+                    mx-auto
+                    w-full
+                    px-8
+                    lg:px-12">
+
+                        <div class="grid lg:grid-cols-2 items-center gap-16">
+
+                            <!-- LEFT -->
+                            <div>
+                                <!-- Heading -->
+                                <h3
+                                class="mt-12
+                                font-black
+                                leading-[0.95]
+                                tracking-tight
+                                text-white
+                                text-5xl
+                                md:text-6xl
+                                xl:text-[80px]
+                                2xl:text-[96px]">
+
+                                <h2 class="feature-title mt-8 text-5xl font-black leading-tight text-black">
+                                    Map Your 
+                                    <br>
+
+                                    <span
+                                    class="bg-gradient-to-r
+                                    from-blue-600
+                                    via-cyan-500
+                                    to-emerald-800
+                                    bg-clip-text
+                                    text-transparent">
+
+                                        Career.
+                                    </span>
+
+                                    <br>
+                                    Learn Smarter.
+                                    <br>
+                                
+
+                                    <span
+                                    class="bg-gradient-to-r
+                                    from-blue-600
+                                    via-cyan-500
+                                    to-emerald-800
+                                    bg-clip-text
+                                    text-transparent">
+                                    
+                                        Achieve More.
+                                    </span>
+                                </h2>
+                                </h3>
+
+                                <!-- Description -->
+
+                                <p
+                                class="feature-title section-text max-w-3xl mt-8 font-black
+                                leading-tight text-black">
+                                    CareerMap AI creates personalized learning paths,
+                                    AI-powered career guidance,
+                                    skill tracking,
+                                    and project-based roadmaps
+                                    to help students become job ready.
+                                </p>
+
+                                <!-- Buttons -->
+
+                                <div
+                                class="mt-12
+                                flex
+                                flex-wrap
+                                gap-5">
+
+                                    <a
+                                    href="register.html"
+
+                                    <button class="animated-button">
+
+                                        <svg class="arr-1" viewBox="0 0 24 24">
+                                            <path d="M12 5l7 7-7 7-1.4-1.4L15.2 13H5v-2h10.2l-4.6-4.6z"/>
+                                        </svg>
+
+                                        <span class="text">
+                                            Get Started
+                                        </span>
+
+                                        <span class="circle"></span>
+
+                                        <svg class="arr-2" viewBox="0 0 24 24">
+                                            <path d="M12 5l7 7-7 7-1.4-1.4L15.2 13H5v-2h10.2l-4.6-4.6z"/>
+                                        </svg>
+
+                                    </button>
+
+                                    </a>
+
+                                    <a
+                                    href="#features"
+
+                                    class="px-8
+                                    py-4
+                                    rounded-2xl
+                                    bg-blue-600
+                                    text-white
+                                    hover:bg-slate-800
+                                    transition-all 
+                                    duration-300">
+
+                                        Explore Features
+
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+<!-- ====================================
+            AI CAREER COACH 
+====================================== -->
+        <section id="ai-coach" class="py-28 bg-white">
+
+                <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                    <div class="grid lg:grid-cols-2 gap-20 items-center">
+
+                        <!-- ==  LEFT SIDE == -->
+                        <div>
+
+                            <!--Badge-->
+                            <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-blue-50 border border-blue-100">
+                                <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
+
+                                <span class="text-black font-semibold text-sm">
+                                    AI Career Coach
+                                </span>
+                            </div>
+
+                            <!--Heading-->
+                            <h2 class="feature-title mt-8 text-5xl font-black leading-tight text-black">
+                                Your Personal
+                                <br>
+                                AI Career Coach
+                            </h2>
+
+                            <!--Description-->
+                            <p class="mt-8 text-lg leading-8 text-slate-600 dark:text-slate-300 max-w-xl">
+                                Ask career questions,
+                                discover skill gaps,
+                                receive personalized guidance,
+                                and generate career roadmaps in seconds.
+                            </p>
+
+                            <!--Features-->
+                            <div class="mt-10 space-y-5">
+                                <div class="flex items-center gap-4">
+
+                                    <div class="w-10 h-10 rounded-xl bg-emerald-100 flex items-center justify-center">
+                                        ✅
+                                    </div>
+
+                                    <div>
+                                        <h4 class="feature-title font-semibold text-black">
+                                            Personalized Career Advice 
+                                        </h4>
+
+                                        <p class="text-slate-500 dark:text-slate-400 text-sm">
+                                            AI understand your goals.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center">
+                                        📈
+                                    </div>
+
+                                    <div>
+                                        <h4 class="feature-title font-semibold text-black">
+                                            Skill Gap Analysis
+                                        </h4>
+
+                                        <p class="text-slate-500 dark:text-slate-400 text-sm">
+                                            Know exactly what to learn next.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="flex items-center gap-4">
+                                    <div class="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center">
+                                        🚀
+                                    </div>
+
+                                    <div>
+
+                                        <h4 class="feature-title font-semibold text-black">
+                                            AI Learning Roadmaps
+                                        </h4>
+
+                                        <p class="text-slate-500 dark:text-slate-400 text-sm">
+                                            Customized for your dream career.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--Button-->
+                            <div class="mt-12">
+                                <a href="register.html"
+                                    class="ai-btn inline-flex items-center gap-3
+                                    px-8 py-4
+                                    rounded-2xl
+                                    bg-blue-600
+                                    text-white
+                                    font-semibold
+                                    hover:bg-blue-700
+                                    transition-all 
+                                    duration-300">
+                                    Try AI Coach →
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <!--==Right Side==-->
+                            <div class="flex justify-center lg:justify-end">
+                                <!--Glow-->
+                                <div class="absolute inset-0 justify-center items-center  -z-10">
+                                    <div class="w-[430px] h-[430px] rounded-full bg-blue-100 blur-[90px] opacity-70"></div>
+                                </div>
+
+                                <!--AI card-->
+                                <div class="ai-card rounded-[32px] bg-white border border-slate-200 shadow-2xl overflow-hidden">
+
+                                    <!--Header-->
+                                    <div class="flex items-center justify-between px-6 py-5 border-b">
+
+                                        <div class="feature-item flex items-center gap-4">
+                                            <div class="w-11 h-11 rounded-xl bg-blue-600
+                                            flex items-center justify-center
+                                            text-white text-xl">
+                                            🤖
+                                        </div>
+
+                                        <div>
+                                            <h3 class="font-bold online-text">
+                                                CareerMap AI
+                                            </h3>
+
+                                            <p class="text-sm text-emerald-600">
+                                                ● Online
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!--Conversation-->
+
+                                    <div class="p-6 space-y-6">
+
+                                        <!-- User -->
+
+                                        <div class="flex justify-end">
+                                            <div class="user-message bg-blue-600
+                                            text-white
+                                            rounded-2xl
+                                            rounded-br-md
+                                            px-5 py-4
+                                            max-w-xs">
+                                            I want to become
+                                            a Data Scientist.
+                                        </div>
+                                    </div>
+
+                                    <!-- AI -->
+                                    <div class="flex gap-3">
+                                            <div class="w-10 h-10 rounded-full
+                                            bg-blue-100
+                                            flex items-center justify-center">
+                                                🤖
+                                            </div>
+
+                                            <div class="ai-message rounded-3xl p-5 flex-1">
+
+                                                <p class="chat-title  text-black">
+                                                    Analyzing your career goal...
+                                                </p>
+
+                                                <!-- Typing Animation -->
+                                                <div id="typingDots"
+                                                class="flex gap-2 mt-4">
+                                                    <span class="w-2 h-2 rounded-full bg-slate-400"></span>
+                                                    <span class="w-2 h-2 rounded-full bg-slate-400"></span>
+                                                    <span class="w-2 h-2 rounded-full bg-slate-400"></span>
+                                                </div>
+
+                                                <!-- Hidden Result -->
+                                                <div id="aiResult"
+                                                class="hidden mt-6">
+                                                    <div class="space-y-3">
+
+                                                        <div class="flex justify-between">
+                                                            <span>Python</span>
+                                                            <span class="text-emerald-600">✓</span>
+                                                        </div>
+
+                                                        <div class="flex justify-between">
+                                                            <span>SQL</span>
+                                                            <span class="text-emerald-600">✓</span>
+                                                        </div>
+
+                                                        <div class="flex justify-between">
+                                                            <span>Machine Learning</span>
+                                                            <span class="text-blue-600">Next</span>
+                                                        </div>
+
+                                                        <div class="flex justify-between">
+                                                            <span>Deep Learning</span>
+                                                            <span class="text-slate-400">Upcoming</span>
+                                                        </div>
+                                                    </div>
+
+                                                    <button
+                                                        class="mt-6 w-full
+                                                        py-3
+                                                        rounded-xl
+                                                        bg-blue-600
+                                                        text-white
+                                                        font-semibold
+                                                        transition-all 
+                                                        duration-300">
+                                                        View Full Roadmap
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </section>
+
+<!-- =======================================================
+                        FAQ SECTION
+======================================================= -->
+
+            <section id="faq" class="py-28 bg-slate-50">
+                <div class="max-w-5xl mx-auto px-6">
+
+                    <!-- Heading -->
+                    <div class="text-center">
+
+                            <div class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-blue-50 border border-blue-100">
+
+                                <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
+
+                                <span class="text-blue-700 text-sm font-semibold">
+                                    Frequently Asked Questions
+                                </span>
+                            </div>
+
+                            <h2 class="faq-question mt-8 text-5xl font-black text-black">
+                                Got Questions?
+                                <br>
+                                We've Got Answers.
+                            </h2>
+
+                            <p class="mt-6 text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
+                                Everything you need to know before starting your
+                                AI-powered career journey.
+                            </p>
+                        </div>
+
+                        <!-- FAQ List -->
+                        <div class="mt-20 space-y-5">
+
+                            <!-- FAQ 1 -->
+                            <div class="faq-item bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
+
+                                <button class="faq-btn w-full flex justify-between items-center px-8 py-6 transition-all duration-300">
+
+                                    <span class="text-lg font-semibold text-black">
+                                        What is CareerMap AI?
+                                    </span>
+
+                                    <span class="faq-icon text-3xl text-blue-600">
+                                        +
+                                    </span>
+
+                                </button>
+                                <div class="faq-content">
+
+                                    <p >
+
+                                        CareerMap AI helps students discover careers,
+                                        generate personalized learning roadmaps,
+                                        track progress,
+                                        and become job-ready using AI.
+
+                                    </p>
+
+                                </div>
+                            </div>
+
+                        <!-- FAQ 2 -->
+                        <div class="faq-item bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
+
+                            <button class="faq-btn w-full flex justify-between items-center px-8 py-6">
+
+                                <span class="text-lg font-semibold text-black">
+                                    How does AI generate my roadmap?
+                                </span>
+
+                                <span class="faq-icon text-3xl text-blue-600">
+                                    +
+                                </span>
+
+                            </button>
+
+                        <div class="faq-content">
+
+                            <p>
+                                Our AI analyzes your career goal,
+                                current skills,
+                                and learning progress
+                                to generate a personalized roadmap.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 3 -->
+                    <div class="faq-item bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
+
+                        <button class="faq-btn w-full flex justify-between items-center px-8 py-6">
+
+                            <span class="text-lg font-semibold text-black">
+                                Is CareerMap AI free?
+                            </span>
+
+                            <span class="faq-icon text-3xl text-blue-600">
+                                +
+                            </span>
+
+                        </button>
+
+                        <div class="faq-content">
+                            <p>
+                                Yes. You can use the core features for free.
+                                More advanced AI features will be introduced in future plans.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 4 -->
+
+                    <div class="faq-item bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
+
+                        <button class="faq-btn w-full flex justify-between items-center px-8 py-6">
+
+                            <span class="text-lg font-semibold text-black">
+                                Can beginners use CareerMap AI?
+                            </span>
+
+                            <span class="faq-icon text-3xl text-blue-600">
+                                +
+                            </span>
+
+                        </button>
+
+                        <div class="faq-content">
+
+                            <p>
+                                Absolutely.
+                                CareerMap AI is designed for beginners,
+                                students,
+                                and professionals looking to switch careers.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 5 -->
+
+                    <div class="faq-item bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
+
+                        <button class="faq-btn w-full flex justify-between items-center px-8 py-6">
+
+                            <span class="text-lg font-semibold text-black">
+                                Which careers are supported?
+                            </span>
+
+                            <span class="faq-icon text-3xl text-blue-600">
+                                +
+                            </span>
+
+                        </button>
+
+                        <div class="faq-content">
+
+                            <p>
+                                Frontend,
+                                Backend,
+                                Full Stack,
+                                AI,
+                                Data Science,
+                                UI/UX,
+                                Cybersecurity,
+                                DevOps,
+                                Cloud,
+                                and many more.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 6 -->
+
+                    <div class="faq-item bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden">
+
+                        <button class="faq-btn w-full flex justify-between items-center px-8 py-6">
+
+                            <span class="text-lg font-semibold text-black">
+                                Is my personal data secure?
+                            </span>
+
+                            <span class="faq-icon text-3xl text-blue-600">
+                                +
+                            </span>
+
+                        </button>
+
+                        <div class="faq-content">
+                            <p>
+                                Yes.
+                                Your data is securely stored,
+                                encrypted,
+                                and never shared without your permission.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+<!-- =======================================================
+                        CTA SECTION
+======================================================= -->
+
+        <section id="cta" class="py-24 dark:bg-white">
+            <div class="max-w-5xl mx-auto px-6">
+                <div class="cta-btn rounded-4xl bg-black px-10 py-16 text-center overflow-hidden relative">
+
+                    <!-- Background Glow -->
+                    <div class="absolute -top-20 -left-20 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl"></div>
+
+                    <div class="absolute -bottom-20 -right-20 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl"></div>
+
+                    <!-- Content -->
+                    <div class="relative z-10">
+
+                        <span class="inline-flex items-center px-4 py-2 rounded-full bg-white/10 text-blue-300 text-sm font-medium">
+                            🚀 Start Your Journey Today
+                        </span>
+
+                        <h2 class="mt-6 text-4xl md:text-5xl font-bold text-white leading-tight">
+                            Build Your Dream Career
+                            <br>
+                            With AI Guidance
+                        </h2>
+
+                        <p class="mt-6 max-w-2xl mx-auto text-slate-300 text-lg leading-8">
+                            Discover the right career path, generate personalized roadmaps,
+                            track your learning progress, and become job-ready with CareerMap AI.
+                        </p>
+
+                        <!-- Buttons -->
+                        <div class="mt-10 flex flex-col sm:flex-row justify-center gap-4">
+
+                            <a href="register.html"
+
+                            class="px-8 py-4 rounded-xl bg-blue-600 text-white font-semibold hover:bg-blue-700 transition duration-300">
+
+                                Get Started Free
+                            </a>
+
+                            <a href="login.html"
+
+                            class="px-8 py-4 rounded-xl border border-white/20 text-white hover:bg-white/10 transition duration-300">
+
+                                Log In
+                            </a>
+                        </div>
+
+                        <!-- Small Text -->
+
+                        <p class="mt-6 text-sm text-slate-400">
+                            Free to start •
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+<!-- =======================================================
+                        FOOTER
+======================================================= -->
+
+                <footer id="footer" class="footer">
+                    <div class="max-w-7xl mx-auto px-6 lg:px-8 py-16">
+                        <div class="grid lg:grid-cols-4 md:grid-cols-2 gap-10">
+
+                            <!-- Logo -->
+                            <div>
+                                <a href="#" class="flex items-center gap-3">
+                                    <img
+                                            src="assets/img/favi.png"
+                                            alt="CareerMap AI"
+                                            class="w-12 h-12">
+
+                                        <div>
+                                            <h3 class="footer-title text-xl font-bold">
+                                                CareerMap AI
+                                            </h3>
+
+                                            <p class="footer-subtitle text-sm">
+                                                AI Career Companion
+                                            </p>
+                                        </div>
+                                    </a>
+
+                                    <p class="footer-description  mt-6 text-white leading-7">
+                                        Helping students discover career paths,
+                                        build personalized learning roadmaps,
+                                        and achieve their dream careers with AI.
+                                    </p>
+                                </div>
+
+                                <!-- Product -->
+
+                                <div>
+                                    <h4 class="font-extrabold footer-title mb-5">
+                                        Product
+                                    </h4>
+
+                                    <ul class="space-y-3">
+                                        <li><a href="#features" class="footer-link">Features</a></li>
+
+                                        <li><a href="#ai-coach" class="footer-link">AI Coach</a></li>
+
+                                        <li><a href="#faq" class="footer-link">FAQ</a></li>
+
+                                        <li><a href="dashboard.html" class="footer-link">Dashboard</a></li>
+                                    </ul>
+                                </div>
+
+                                <!-- Company -->
+
+                                <div>
+                                    <h4 class="font-extrabold footer-title mb-5">
+                                        Company
+                                    </h4>
+
+                                    <ul class="space-y-3">
+                                        <li><a href="#" class="footer-link">About</a></li>
+
+                                        <li><a href="#" class="footer-link">Privacy Policy</a></li>
+
+                                        <li><a href="#" class="footer-link">Terms & Conditions</a></li>
+
+                                        <li><a href="#" class="footer-link">Contact</a></li>
+                                    </ul>
+                                </div>
+
+                                <!-- Contact -->
+
+                                <div>
+                                    <h4 class="font-extrabold footer-title  mb-5">
+                                        Connect
+                                    </h4>
+
+                                    <ul class="space-y-3">
+
+                                        <li>
+                                            <a href="mailto:hello@careermapai.com" class="footer-link">
+                                                hello@careermapai.com
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#" class="footer-link">
+                                                GitHub
+                                            </a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#" class="footer-link">
+                                                LinkedIn
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                        </div>
+
+                    <!--=============================================
+                                    Bottom Footer
+                    ===========================================-->
+                        <div class="border-t border-slate-300 dark:border-slate-700 mt-12 pt-8">
+
+                            <div class="grid md:grid-cols-3 items-center gap-10">
+                                    
+                                    <!--Left-->
+                                    <p class="text-slate-600 dark:text-slate-300 dark:text-slate-400 font-semibold">
+                                        © 2026 CareerMap AI. All rights reserved.
+                                    </p>
+
+                                    <!-- Center -->
+                                    <p class="text-slate-600 dark:text-slate-300 dark:text-slate-400 font-semibold">
+                                        Built for Students.
+                                    </p>
+                            </div>   
+                        </div> 
+                    </div>
+                </footer>
+        <script src="assets/js/landing.js"></script>
+    </body>
+</html>

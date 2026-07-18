@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title> Create Account |CareerMap AI</title>
+
+        <script src="https://cdn.tailwindcss.com"></script>
+
+        <link rel="icon" href="assets/img/icon/logo.png">
+
+        <link rel="stylesheet" href="assets/css/register.css">
+    </head>
+    <body>
+        <div class="register-page">
+
+            <!--Backgroung orbit-->
+            <div class="orbit orbit-1"></div>
+            <div class="orbit orbit-2"></div>
+            <div class="orbit orbit-3"></div>
+            
+            <div class="dot dot1 blue"></div>
+            <div class="dot dot2 yellow"></div>
+            <div class="dot dot3 cyan"></div>
+            <div class="dot dot4 cyan"></div>
+            <div class="dot dot5 purple"></div>
+            <div class="dot dot6 orange"></div>
+
+            
+            <!--=============================
+                        Left Icons
+            ==============================-->
+            <div class="left0icons">
+
+                <img src="assets/img/js.svg" class="floating js" alt="JavaScript">
+
+                <img src="assets/img/typescript.svg" class="floating ts" alt="TypeScript">
+
+                <img src="assets/img/node.svg" class="floating node" alt="NodeJS">
+
+                <img src="assets/img/bootstrap.svg" class="floating bootstrap" alt="Bootstrap">
+
+                <img src="assets/img/tailwind.svg" class="floating tailwind" alt="Tailwind">
+
+            </div>
+            
+            <!--=============================
+                        Right Icons
+            ==============================-->
+            <div class="right-icons">
+
+                <img src="assets/img/react.svg" class="floating react" alt="React">
+
+                <img src="assets/img/html-5.svg" class="floating html" alt="HTML">
+
+                <img src="assets/img/css-3.svg" class="floating css" alt="CSS">
+
+                <img src="assets/img/firebase.svg" class="floating firebase" alt="Firebase">
+
+                <img src="assets/img/git.svg" class="floating git" alt="Git">
+
+            </div>
+
+            <!--=============================
+                        Register Card
+            ==============================-->
+            <div class="register-card">
+
+                <!--Logo-->
+                <img src="assets/img/icon/logo.png"
+                    class="logo"
+                    alt="CareerMap AI Logo">
+
+                    <!--Heading-->
+                    <h1>
+                        Career Your Account
+                    </h1>
+
+                    <p>
+                        Start your AI-powered career journey today.
+                    </p>
+
+                    <!--Google Button-->
+                    <button id="googleRegisterBtn"
+                            class="google-btn border-black">
+                        
+                            <img src="assets/img/google.svg"
+                                alt="Google">
+
+                                Countinue with Google
+                    </button>
+
+                    <!--Divider-->
+                    <div class="divider">
+
+                        <span></span>
+                        <small>OR</small>
+                        <span></span>
+
+                    </div>
+
+                    <!--=============================
+                        Register Form
+                    ==============================-->
+                    <form id="registerForm">
+                        <div class="form-row">
+                            <!--Full Name-->
+                            <div class="input-group">
+                                <label for="fullName">
+                                    Full Name
+                                </label>
+
+                                <input id="fullName"
+                                        type="text"
+                                        placeholder="Enter your full name"
+                                        autocomplete="name"
+                                        required>
+                            </div>
+
+                            <!--Email-->
+                            <div class="input-group">
+                                <label for="email">
+                                    Email Address
+                                </label>
+
+                                <input id="email"
+                                        type="email"
+                                        placeholder="Enter your emial"
+                                        autocomplete="email"
+                                        required>
+                            </div>
+                        </div>
+
+                        <!--Password-->
+                        <div class="input-group">
+                            <label for="password">
+                                Password
+                            </label>
+
+                            <div class="password-box">
+                                <input id="password"
+                                        type="password"
+                                        placeholder="Create password"
+                                        autocomplete="new-password"
+                                        required>
+
+                                <button type="button"
+                                        id="togglePassword"
+                                        class="eye-btn">
+                                        👁
+                                </button>
+                            </div>
+                        </div>
+
+                        <!--Confirm Password-->
+                        <div class="input-group">
+                            <label for="confirmPassword">
+                                Confirm Password
+                            </label>
+
+                            <div class="password-box">
+                                <input id="confirmPassword"
+                                        type="password"
+                                        placeholder="confirm Password"
+                                        autocomplete="new-password"
+                                        required>
+                                
+                                <button type="button"
+                                        id="toggleConfirmPassword"
+                                        class="eye-btn">
+                                        👁
+                                </button>
+                            </div>
+                        </div>
+
+                        <!--Term-->
+                        <div class="terms">
+                            <input id="agreeTerms"
+                                    type="checkbox"
+                                    required>
+                            <label for="agreeTerms">
+                                I agree to the
+
+                                <a href="#">
+                                    Terms of service
+                                </a>
+                            </label>
+                        </div>
+
+                        <!--Register button-->
+                        <button id="registerBtn"
+                                type="submit"
+                                class="register-btn">
+                                Create Account    
+                        </button>
+                    </form>
+
+                <!--Login-->
+                <div class="login-link">
+                    <p>
+                        Already have an account?
+                        <a href="login.html">
+                                Sign In
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!--Register JS-->
+        <script src="assets/js/register.js"></script>
+        <script src="assets/js/auth-check.js"></script>
+    </body>
+</html>

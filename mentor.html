@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Learning | CareerMap AI</title>
+
+    <link rel="icon" href="assets/img/icon/logo.png">
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ["Inter", "sans-serif"]
+                    },
+                    colors: {
+                        primary: "#2563EB"
+                    }
+                }
+            }
+        }
+    </script>
+
+</head>
+
+<body class="bg-slate-100 font-sans text-slate-800 overflow-x-hidden">
+
+    <div class="flex min-h-screen bg-white/10">
+
+        <!--===== Sidebar =====-->
+        <aside id="sidebar" class="fixed top-0 left-0 z-50 h-screen w-72 bg-white border-r border-slate-200 flex flex-col transform
+            -transition-x-full -translate-x-full transition-transform
+            duration-300 lg:translate-x-0">
+
+            <!-- Logo -->
+            <div class="border-b border-slate-200 p-4">
+                <div class="flex items-center gap-6">
+                    <img src="assets/img/favi.png" alt="CareerMap AI" class="w-12 h-12 rounded-lg">
+
+                    <div>
+                        <h1 class="text-xl font-bold">
+                            CareerMap AI
+                        </h1>
+
+                        <p class="text-sm text-slate-500">
+                            AI Career Companion
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="flex-1 px-4 py-6 space-y-2">
+
+                <a href="dashboard.html"
+                    class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-100">
+                    <i class="fa-solid fa-house"></i>
+                    Dashboard
+                </a>
+
+                <a href="roadmap.html"
+                    class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-100">
+                    <i class="fa-solid fa-road"></i>
+                    Roadmap
+                </a>
+
+                <a href="learning.html"
+                    class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-100">
+                    <i class="fa-solid fa-book-open"></i>
+                    Learning
+                </a>
+
+                <a href="mentor.html" class="flex items-center gap-3 px-4 py-3 rounded-xl bg-blue-600 text-white">
+                    <i class="fa-solid fa-robot"></i>
+                    AI Mentor
+                </a>
+
+                <a href="resumebuilder.html"
+                    class="flex items-center gap-3 px-4 py-3 rounded-xl text-slate-600 hover:bg-slate-100">
+                    <i class="fa-solid fa-briefcase"></i>
+                    Resume Builder
+                </a>
+
+                <a href="progress.html" class="flex items-center gap-3 rounded-xl
+                    px-4 py-3 text-slate-600 hover:bg-slate-100">
+                    <i class="fa-solid fa-chart-line"></i>
+                    Progress
+                </a>
+
+                <a href="profile.html" class="flex items-center gap-3 rounded-xl
+                    px-4 py-3 text-slate-600 hover:bg-slate-100">
+                    <i class="fa-solid fa-user"></i>
+                    Profile
+                </a>
+            </nav>
+
+            <!-- Bottom -->
+            <a href="login.html">
+                <div class="border-t border-slate-200 p-4">
+                    <button id="logoutBtn" class="w-full rounded-xl
+                        border border-slate-300 py-3 font-medium
+                        hover:bg-slate-100">
+                        <i class="fa-solid fa-right-from-bracket mr-2"></i>
+                        Logout
+                    </button>
+                </div>
+            </a>
+        </aside>
+
+        <!-- Overlay -->
+        <div id="overlay"
+            class="fixed inset-0 bg-black/40 opacity-0 invisible transition-all duration-300 lg:hidden z-40">
+        </div>
+
+        <!-- Mobile Overlay -->
+        <div id="overlay" class="fixed inset-0 bg-black/40 z-40 hidden lg:hidden">
+        </div>
+
+        <!-- Right Side -->
+        <div class="flex flex-1 flex-col lg:ml-72">
+
+            <!--===== Header =====-->
+            <header class="flex flex-1 flex-col top-2 z-40 bg-white border-b border-slate-200 rounded-lg border">
+                <div class="flex items-center justify-between h-20 px-6 lg:px-7">
+
+                    <!-- Left -->
+                    <div class="flex items-center gap-4">
+
+                        <!-- Mobile Menu -->
+                        <button id="menuBtn"
+                            class="lg:hidden w-11 h-11 rounded-lg border border-slate-200 hover:bg-slate-100 transition">
+                            <i class="fa-solid fa-bars"></i>
+                        </button>
+
+                        <!-- Search -->
+                        <div
+                            class="hidden md:flex items-center w-80 rounded-xl border border-slate-200 bg-slate-50 px-4">
+                            <i class="fa-solid fa-magnifying-glass text-slate-400"></i>
+
+                            <input type="text" placeholder="Search..."
+                                class="w-full bg-transparent px-3 py-3 outline-none text-sm">
+                        </div>
+                    </div>
+
+                    <!-- Right -->
+                    <div class="flex items-center gap-4">
+
+                        <!-- Notification -->
+                        <button
+                            class="relative w-11 h-11 rounded-lg border border-slate-200 hover:bg-slate-100 transition">
+
+                            <i class="fa-regular fa-bell"></i>
+
+                            <span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-red-500"></span>
+
+                        </button>
+
+                        <!-- Profile -->
+                        <button id="profileBtn"
+                            class="flex items-center gap-3 rounded-xl border border-slate-200 px-3 py-2 hover:bg-slate-50 transition">
+
+                            <img src="assets/img/avatar.png" class="w-10 h-10 rounded-full object-cover" alt="Profile">
+
+                            <div class="hidden sm:block text-left">
+                                <h4 class="text-sm font-semibold">
+                                    <span id="userName"></span>
+                                </h4>
+
+                                <p class="text-xs text-slate-500">
+                                    Student
+                                </p>
+                            </div>
+
+                            <i class="fa-solid fa-chevron-down text-xs text-slate-400"></i>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+            <!--================ Mentor Hero ================-->
+            <main id="mainContent" class="flex-1 p-9 lg:p-7">
+
+                <section class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+                    <!-- Left Hero -->
+                    <div class="lg:col-span-2 bg-white rounded-xl border border-slate-200 p-8">
+
+                        <!-- AI Header -->
+                        <div class="flex items-center gap-5">
+                            <div
+                                class="h-20 w-40 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center text-white text-3xl shadow-lg">
+                                <i class="fa-solid fa-robot"></i>
+                            </div>
+
+                            <div>
+                                <div class="flex items-center gap-2">
+                                    <h2 class="text-3xl font-bold text-slate-800">
+                                        AI Mentor
+                                    </h2>
+
+                                    <span
+                                        class="flex items-center gap-1 rounded-full bg-green-100 px-3 py-1 text-xs font-semibold text-green-700">
+
+                                        <span class="h-2 w-2 rounded-full bg-green-500"></span>
+                                        Online
+                                    </span>
+                                </div>
+
+                                <p class="mt-2 text-slate-500">
+                                    Your personal AI career coach is ready to help you learn,
+                                    practice, build projects, improve your resume, and prepare
+                                    for interviews.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Welcome -->
+                        <div class="mt-8">
+                            <h1 class="text-4xl font-bold text-slate-800 leading-tight">
+                                Welcome back,
+                                <span class="text-blue-600">
+                                    Pathan 👋
+                                </span>
+                            </h1>
+
+                            <p class="mt-4 max-w-2xl text-slate-600 leading-relaxed">
+                                Ask anything about your career roadmap, coding,
+                                interview preparation, resume optimization,
+                                project ideas, or learning strategy.
+                            </p>
+                        </div>
+
+                        <!-- Buttons -->
+                        <div class="mt-8 flex flex-wrap gap-4">
+                            <button
+                                class="rounded-xl bg-blue-600 px-6 py-3 text-white font-semibold hover:bg-blue-700 transition">
+                                <i class="fa-solid fa-comments mr-2"></i>
+                                Start New Chat
+                            </button>
+
+                            <button
+                                class="rounded-xl border border-slate-300 px-6 py-3 font-semibold hover:bg-slate-100 transition">
+                                <i class="fa-solid fa-clock-rotate-left mr-2"></i>
+                                Chat History
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Right Card -->
+                    <div class="bg-white border rounded-3xl p-6 shadow-sm">
+                        <h3 class="text-xl font-bold text-slate-800">
+                            Career Snapshot
+                        </h3>
+
+                        <div class="mt-6 space-y-5">
+                            <div>
+                                <p class="text-sm text-slate-500">
+                                    Current Career Goal
+                                </p>
+
+                                <h4 class="text-lg font-semibold mt-1">
+                                    Full Stack Developer
+                                </h4>
+                            </div>
+
+                            <div>
+                                <p class="text-sm text-slate-500">
+                                    AI Confidence
+                                </p>
+
+                                <div class="mt-2 w-full h-3 rounded-full bg-slate-200">
+                                    <div class="w-[88%] h-full rounded-full bg-green-500"></div>
+                                </div>
+
+                                <p class="mt-2 text-sm font-medium text-green-600">
+                                    88% Ready
+                                </p>
+                            </div>
+
+                            <div>
+                                <p class="text-sm text-slate-500">
+                                    Next Recommendation
+                                </p>
+
+                                <h4 class="font-semibold mt-1">
+                                    Learn React Hooks
+                                </h4>
+                            </div>
+
+                            <div>
+                                <p class="text-sm text-slate-500">
+                                    Estimated Study Today
+                                </p>
+
+                                <h4 class="font-semibold mt-1">
+                                    1 Hour 30 Minutes
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!--================ AI Chat Interface ================-->
+                <section class="mt-10">
+                    <div class="bg-white border rounded-3xl shadow-sm overflow-hidden">
+
+                        <!-- Chat Header -->
+                        <div class="flex items-center justify-between border-b p-5">
+                            <div class="flex items-center gap-3">
+                                <div
+                                    class="h-12 w-12 rounded-full bg-blue-600 flex items-center justify-center text-white text-xl">
+                                    <i class="fa-solid fa-robot"></i>
+                                </div>
+
+                                <div>
+                                    <h3 class="font-bold text-lg">
+                                        AI Mentor
+                                    </h3>
+
+                                    <p class="text-sm text-green-600">
+                                        ● Online
+                                    </p>
+                                </div>
+                            </div>
+
+                            <button class="rounded-xl border border-slate-300 px-4 py-2 hover:bg-slate-100 transition">
+                                Clear Chat
+                            </button>
+                        </div>
+
+                        <!-- Chat Body -->
+                        <div id="chatContainer" class="h-[500px] overflow-y-auto p-6 bg-slate-50 space-y-6">
+
+                            <!-- AI Message -->
+                            <div class="flex gap-4">
+                                <div
+                                    class="h-10 w-10 rounded-full bg-blue-600 text-white flex items-center justify-center flex-shrink-0">
+                                    <i class="fa-solid fa-robot"></i>
+                                </div>
+
+                                <div>
+                                    <div class="bg-white rounded-2xl rounded-tl-md p-4 shadow-sm max-w-2xl">
+                                        <p class="text-slate-700">
+                                            👋 Hello Pathan!
+                                            I'm your AI Mentor.
+                                            I can help you with:
+                                        </p>
+
+                                        <ul class="mt-3 space-y-2 text-slate-600">
+                                            <li>• Career Roadmaps</li>
+                                            <li>• Resume Reviews</li>
+                                            <li>• Coding Help</li>
+                                            <li>• Interview Preparation</li>
+                                            <li>• Project Ideas</li>
+                                        </ul>
+                                    </div>
+
+                                    <p class="text-xs text-slate-400 mt-2">
+                                        Today • 09:30 PM
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- User Message -->
+                            <div class="flex justify-end">
+                                <div>
+                                    <div class="bg-blue-600 text-white rounded-2xl rounded-tr-md p-4 max-w-xl">
+                                        How can I become a Full Stack Developer?
+                                    </div>
+
+                                    <p class="text-xs text-right text-slate-400 mt-2">
+                                        09:31 PM
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- AI Reply -->
+                            <div class="flex gap-4">
+                                <div
+                                    class="h-10 w-10 rounded-full bg-blue-600 text-white flex items-center justify-center flex-shrink-0">
+                                    <i class="fa-solid fa-robot"></i>
+                                </div>
+
+                                <div>
+                                    <div class="bg-white rounded-2xl rounded-tl-md p-4 shadow-sm max-w-2xl">
+                                        <p>
+                                            Great choice!
+                                        </p>
+
+                                        <p class="mt-3">
+                                            Here's the roadmap I'd recommend:
+                                        </p>
+
+                                        <ol class="list-decimal ml-6 mt-3 space-y-2">
+                                            <li>HTML & CSS</li>
+                                            <li>JavaScript</li>
+                                            <li>React</li>
+                                            <li>Node.js</li>
+                                            <li>Database</li>
+                                            <li>Projects & Deployment</li>
+                                        </ol>
+                                    </div>
+
+                                    <p class="text-xs text-slate-400 mt-2">
+                                        09:31 PM
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- Typing Indicator -->
+                            <div id="typingIndicator" class="gap-4 hidden">
+                                <div
+                                    class="h-10 w-10 rounded-full bg-blue-600 text-white flex items-center justify-center">
+                                    <i class="fa-solid fa-robot"></i>
+                                </div>
+
+                                <div class="bg-white rounded-2xl rounded-tl-md px-5 py-4 shadow-sm">
+                                    <div class="flex gap-2">
+                                        <span class="h-2 w-2 rounded-full bg-slate-400 animate-bounce"></span>
+
+                                        <span class="h-2 w-2 rounded-full bg-slate-400 animate-bounce delay-100"></span>
+
+                                        <span class="h-2 w-2 rounded-full bg-slate-400 animate-bounce delay-200"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Chat Input -->
+                        <div class="border-t bg-white p-5">
+                            <div class="flex items-center gap-3">
+                                <input id="chatInput" type="text" placeholder="Ask your AI Mentor anything..."
+                                    class="flex-1 rounded-xl border border-slate-300 px-5 py-3 outline-none focus:ring-2 focus:ring-blue-500">
+
+                                <!-- Voice -->
+                                <button
+                                    class="h-12 w-12 rounded-xl border border-slate-300 hover:bg-slate-100 transition">
+                                    <i class="fa-solid fa-microphone"></i>
+                                </button>
+
+                                <!-- Send -->
+                                <button id="sendBtn"
+                                    class="h-12 px-6 rounded-xl bg-blue-600 text-white hover:bg-blue-700 transition">
+                                    <i class="fa-solid fa-paper-plane"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+
+                <!-- Suggested Questions & Quick Actions -->
+                <section class="mt-8">
+
+                    <!-- Section Header -->
+                    <div class="flex items-center justify-between mb-5">
+                        <div>
+                            <h2 class="text-2xl font-bold text-slate-800">
+                                Suggested Questions
+                            </h2>
+
+                            <p class="text-slate-500 mt-1">
+                                Start a conversation instantly with one click.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Prompt Chips -->
+                    <div class="flex flex-wrap gap-4">
+                        <button
+                            class="prompt-btn rounded-full border border-slate-300 bg-white px-5 py-3 hover:bg-blue-50 hover:border-blue-500 transition">
+                            💼 Review my Resume
+                        </button>
+
+                        <button
+                            class="prompt-btn rounded-full border border-slate-300 bg-white px-5 py-3 hover:bg-blue-50 hover:border-blue-500 transition">
+                            🗺️ Generate Career Roadmap
+                        </button>
+
+                        <button
+                            class="prompt-btn rounded-full border border-slate-300 bg-white px-5 py-3 hover:bg-blue-50 hover:border-blue-500 transition">
+                            📚 Suggest today's study plan
+                        </button>
+
+                        <button
+                            class="prompt-btn rounded-full border border-slate-300 bg-white px-5 py-3 hover:bg-blue-50 hover:border-blue-500 transition">
+                            🎤 Prepare me for interviews
+                        </button>
+
+                        <button
+                            class="prompt-btn rounded-full border border-slate-300 bg-white px-5 py-3 hover:bg-blue-50 hover:border-blue-500 transition">
+                            💻 Explain this code
+                        </button>
+
+                        <button
+                            class="prompt-btn rounded-full border border-slate-300 bg-white px-5 py-3 hover:bg-blue-50 hover:border-blue-500 transition">
+                            🚀 Recommend my next project
+                        </button>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="mt-10">
+                        <h3 class="text-xl font-bold text-slate-800 mb-5">
+                            Quick Actions
+                        </h3>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                            <button
+                                class="rounded-2xl bg-white border p-6 text-left hover:shadow-md hover:-translate-y-1 transition">
+
+                                <div class="text-4xl">📄</div>
+
+                                <h4 class="mt-4 text-lg font-semibold">
+                                    Resume Review
+                                </h4>
+
+                                <p class="mt-2 text-sm text-slate-500">
+                                    Get AI suggestions to improve your ATS score.
+                                </p>
+                            </button>
+
+                            <button
+                                class="rounded-2xl bg-white border p-6 text-left hover:shadow-md hover:-translate-y-1 transition">
+
+                                <div class="text-4xl">🧠</div>
+
+                                <h4 class="mt-4 text-lg font-semibold">
+                                    Skill Gap Analysis
+                                </h4>
+
+                                <p class="mt-2 text-sm text-slate-500">
+                                    Discover which skills you should learn next.
+                                </p>
+                            </button>
+
+                            <button
+                                class="rounded-2xl bg-white border p-6 text-left hover:shadow-md hover:-translate-y-1 transition">
+
+                                <div class="text-4xl">🎯</div>
+
+                                <h4 class="mt-4 text-lg font-semibold">
+                                    Interview Preparation
+                                </h4>
+
+                                <p class="mt-2 text-sm text-slate-500">
+                                    Practice HR and technical interview questions.
+                                </p>
+                            </button>
+
+                            <button
+                                class="rounded-2xl bg-white border p-6 text-left hover:shadow-md hover:-translate-y-1 transition">
+
+                                <div class="text-4xl">💻</div>
+
+                                <h4 class="mt-4 text-lg font-semibold">
+                                    Code Review
+                                </h4>
+
+                                <p class="mt-2 text-sm text-slate-500">
+                                    Let AI explain or improve your code.
+                                </p>
+                            </button>
+
+                            <button
+                                class="rounded-2xl bg-white border p-6 text-left hover:shadow-md hover:-translate-y-1 transition">
+
+                                <div class="text-4xl">📚</div>
+
+                                <h4 class="mt-4 text-lg font-semibold">
+                                    Study Planner
+                                </h4>
+
+                                <p class="mt-2 text-sm text-slate-500">
+                                    Generate a personalized daily learning schedule.
+                                </p>
+                            </button>
+
+                            <button
+                                class="rounded-2xl bg-white border p-6 text-left hover:shadow-md hover:-translate-y-1 transition">
+
+                                <div class="text-4xl">🚀</div>
+
+                                <h4 class="mt-4 text-lg font-semibold">
+                                    Project Ideas
+                                </h4>
+
+                                <p class="mt-2 text-sm text-slate-500">
+                                    Get project recommendations based on your skills.
+                                </p>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!--AI Career Insights Dashboard-->
+                <section class="mt-10">
+
+                    <!-- Section Heading -->
+                    <div class="flex items-center justify-between mb-6">
+                        <div>
+                            <h2 class="text-2xl font-bold text-slate-800">
+                                AI Career Insights
+                            </h2>
+
+                            <p class="text-slate-500 mt-1">
+                                AI-generated insights based on your learning progress and career goals.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Statistics -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-5 gap-5">
+
+                        <!-- Resume Score -->
+                        <div class="bg-white border rounded-2xl p-6 shadow-sm">
+                            <div class="text-4xl">📄</div>
+
+                            <p class="text-sm text-slate-500 mt-4">
+                                Resume Score
+                            </p>
+
+                            <h3 class="text-4xl font-bold mt-2">
+                                92%
+                            </h3>
+
+                            <p class="text-green-600 text-sm mt-2">
+                                Excellent ATS Compatibility
+                            </p>
+                        </div>
+
+                        <!-- Career Readiness -->
+                        <div class="bg-white border rounded-2xl p-6 shadow-sm">
+                            <div class="text-4xl">🎯</div>
+
+                            <p class="text-sm text-slate-500 mt-4">
+                                Career Readiness
+                            </p>
+
+                            <h3 class="text-4xl font-bold mt-2">
+                                81%
+                            </h3>
+
+                            <p class="text-blue-600 text-sm mt-2">
+                                Almost Job Ready
+                            </p>
+                        </div>
+
+                        <!-- Weekly Progress -->
+                        <div class="bg-white border rounded-2xl p-6 shadow-sm">
+                            <div class="text-4xl">📈</div>
+
+                            <p class="text-sm text-slate-500 mt-4">
+                                Weekly Progress
+                            </p>
+
+                            <h3 class="text-4xl font-bold mt-2">
+                                +18%
+                            </h3>
+
+                            <p class="text-green-600 text-sm mt-2">
+                                Faster than last week
+                            </p>
+                        </div>
+
+                        <!-- Learning Streak -->
+                        <div class="bg-white border rounded-2xl p-6 shadow-sm">
+                            <div class="text-4xl">🔥</div>
+
+                            <p class="text-sm text-slate-500 mt-4">
+                                Learning Streak
+                            </p>
+
+                            <h3 class="text-4xl font-bold mt-2">
+                                21
+                            </h3>
+
+                            <p class="text-orange-600 text-sm mt-2">
+                                Days in a row
+                            </p>
+                        </div>
+
+                        <!-- Job Match -->
+                        <div class="bg-white border rounded-2xl p-6 shadow-sm">
+                            <div class="text-4xl">💼</div>
+
+                            <p class="text-sm text-slate-500 mt-4">
+                                Job Match
+                            </p>
+
+                            <h3 class="text-4xl font-bold mt-2">
+                                86%
+                            </h3>
+
+                            <p class="text-indigo-600 text-sm mt-2">
+                                Based on your skills
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- AI Recommendations -->
+                    <div class="mt-8 bg-white border rounded-3xl p-8 shadow-sm">
+                        <div class="flex items-center gap-3">
+
+                            <div
+                                class="h-14 w-14 rounded-2xl bg-blue-600 text-white flex items-center justify-center text-2xl">
+
+                                🧠
+                            </div>
+
+                            <div>
+                                <h3 class="text-2xl font-bold text-slate-800">
+                                    AI Personalized Recommendations
+                                </h3>
+
+                                <p class="text-slate-500 mt-1">
+                                    Recommendations generated specifically for your career journey.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-8">
+
+                            <!-- Recommendation 1 -->
+                            <div class="rounded-2xl border p-6 hover:shadow-md transition">
+                                <div class="text-3xl">⚛️</div>
+
+                                <h4 class="font-semibold text-lg mt-4">
+                                    Learn React Hooks
+                                </h4>
+
+                                <p class="text-sm text-slate-500 mt-2">
+                                    Completing React Hooks will significantly improve your frontend development skills.
+                                </p>
+                            </div>
+
+                            <!-- Recommendation 2 -->
+                            <div class="rounded-2xl border p-6 hover:shadow-md transition">
+                                <div class="text-3xl">📄</div>
+
+                                <h4 class="font-semibold text-lg mt-4">
+                                    Improve Resume
+                                </h4>
+
+                                <p class="text-sm text-slate-500 mt-2">
+                                    Add one more full-stack project to increase your ATS score.
+                                </p>
+                            </div>
+
+                            <!-- Recommendation 3 -->
+                            <div class="rounded-2xl border p-6 hover:shadow-md transition">
+                                <div class="text-3xl">💻</div>
+
+                                <h4 class="font-semibold text-lg mt-4">
+                                    Practice JavaScript
+                                </h4>
+
+                                <p class="text-sm text-slate-500 mt-2">
+                                    Solve two coding problems today to improve problem-solving skills.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <!--================ Footer ================-->
+            <footer class="mt-12 border-t py-8 text-center text-black">
+
+                <h3 class="font-bold text-lg">
+                    CareerMap AI
+                </h3>
+
+                <p class="mt-2">
+                    Your Personalized AI Career Companion.
+                </p>
+
+                <div class="flex justify-center gap-6 mt-5">
+                    <a href="#">Dashboard</a>
+                    <a href="#">Roadmap</a>
+                    <a href="#">Learning</a>
+                    <a href="#">AI Mentor</a>
+                    <a href="#">Profile</a>
+                </div>
+
+                <p class="mt-6 text-sm">
+                    © 2026 CareerMap AI. Built with ❤️ by BCA Students.
+                </p>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Logout Modal -->
+            <div id="logoutModal"
+                class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 backdrop-blur-sm">
+                <div class="w-[90%] max-w-md rounded-2xl bg-white dark:bg-slate-900 shadow-2xl p-6">
+                    <div class="flex items-center gap-4">
+                        <div
+                            class="flex h-14 w-14 items-center justify-center rounded-full bg-red-100 dark:bg-red-500/20">
+                            <span class="text-2xl">🚪</span>
+                        </div>
+
+                        <div>
+                            <h2 class="text-xl font-bold text-slate-900 dark:text-white">
+                                Logout?
+                            </h2>
+
+                            <p class="mt-1 text-sm text-slate-500 dark:text-slate-400">
+                                Are you sure you want to sign out of CareerMap AI?
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 flex justify-end gap-3">
+                        <button id="cancelLogout"
+                            class="rounded-xl text-white border border-slate-300 px-5 py-2 font-medium hover:bg-slate-100 dark:border-slate-700 dark:hover:bg-slate-800">
+                            Cancel
+                        </button>
+
+                        <button id="confirmLogout"
+                            class="rounded-xl bg-red-600 px-5 py-2 font-medium text-white hover:bg-red-700">
+                            Logout
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+    <script src="assets/js/learning.js"></script>
+    <script src="assets/js/guard.js"></script>
+    <script src="assets/js/logout.js"></script>
+</body>
+
+</html>
